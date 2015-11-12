@@ -10,14 +10,18 @@ class Napakalaki
   
   def initialize(resultado)
     @result=resultado
+    @players
   end
     
     def Napakalaki
     
     end
     
-    def initPlayers(names)
-    
+    private def initPlayers(names)
+        @players = Array.new# Inicializamos el array
+        for n in names
+           players << Player.new(n)
+        end
     end
     
     def nextPlayer

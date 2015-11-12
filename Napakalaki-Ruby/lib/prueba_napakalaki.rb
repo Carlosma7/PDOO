@@ -60,3 +60,5 @@ for m in monsters
     puts #Salto de línea
   end
 end
+
+

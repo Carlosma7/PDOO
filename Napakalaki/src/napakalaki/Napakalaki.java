@@ -18,14 +18,17 @@ public class Napakalaki {
     //Variables de otras clases
     private Monster currentMonster;
     private Player currentPlayer;
-    private ArrayList <Player> players = new ArrayList();
+    private ArrayList <Player> players;
     
     private Napakalaki(){
         
     }
     
     private void initPlayers(ArrayList<String> names){
-    
+        players = new ArrayList();// Inicializamos el array
+        for(String n:names){
+           players.add(new Player(n));
+        }
     }
     
     private Player nextPlayer(){

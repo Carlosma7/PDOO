@@ -3,16 +3,19 @@
 class Player
   
   @@MAXLEVEL = 10
-  @level
-  @name
-  @dead=true
-  @canISteal=true
+  def initialize(name,level, dead=true, canISteal=true, enemy, visibleTreasures, 
+    hiddenTreasures,pendingBadConsequence)
+    @level=level
+    @name=name
+    @dead=dead
+    @canISteal=canISteal
  
-  # Atributos de referencia
-  @enemy
-  @visibleTreasure
-  @hiddenTreasures # array.new
-  @pendingBadConsequence
+    # Atributos de referencia
+    @enemy=enemy
+    @visibleTreasure=visibleTreasures
+    @hiddenTreasures=hiddenTreasures # array.new
+    @pendingBadConsequence=pendingBadConsequence
+  end
   
   # Consultores
   attr_reader :name # Metodo getName()
@@ -21,8 +24,8 @@ class Player
   
   
   # Constructor con el parametro nombre
-  def initialize (name)
-    @name=name
+  def self.player (name)
+    new(name,0,false,false, enemy, )
   end
   
   # ------------ Metodos publicos --------------------
@@ -147,7 +150,12 @@ class Player
   
   # Metodo howManyVisibleTreasures
   private def howManyVisibleTreasures(tKind)
-    
+    for t in visibleTreasures
+      if(t.getType == tKind)
+        @numeroDeTesoros = @numeroDeTesoros+1
+      end
+    end
+    return numeroDeTesoros
   end
   
   # Metodo dieIfNoTreasures
@@ -165,7 +173,11 @@ class Player
   
   # Metodo canYouGiveMeATreasure
   private def canYouGiveMeATreasure
-    @hiddenTreasures.length > 0
+    if(@hiddenTreasures.isEmpty)
+      return false
+    else 
+      return true
+    end
   end
   
   # Metodo haveStolen
