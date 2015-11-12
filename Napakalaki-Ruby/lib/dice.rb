@@ -7,6 +7,7 @@ class Dice
   include Singleton
     
   def public nextNumber
-     rand(7)
+     n= rand(7)
+     return n
   end
 end

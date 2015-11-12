@@ -17,7 +17,7 @@ public class Player {
     private BadConsequence pendingBadConsequence;
     private ArrayList <Treasure> hiddenTreasures = new ArrayList();
     private ArrayList <Treasure> visibleTreasures = new ArrayList();
-    private Player enemy;
+    public Player enemy;
     
 
 

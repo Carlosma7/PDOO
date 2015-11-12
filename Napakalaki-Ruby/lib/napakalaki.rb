@@ -24,16 +24,49 @@ class Napakalaki
         end
     end
     
-    def nextPlayer
-      
+    private def nextPlayer
+        nextPlayer  #Variable a devolver por el metodo
+        
+        tam=players.size #Guardamos el tamaño del array de jugadores
+        turno #Turno del jugador que sea
+        
+               
+        if()  #No iniciada
+            turno=rand(tam)
+            nextPlayer=players[turno]
+        else  #Iniciada
+            if(turno==tam-1)
+                turno=0
+            else
+                turno=turno+1
+            end
+            nextPlayer=players[turno]
+        end
+        
+        return nextPlayer
     end
     
     def nextTurnAllowed
-      
+      permitido=false
+        
+      if(currentPlayer.validState)
+          permitido=true
+      end
+        
+      return permitido
     end
     
     def setEnemies
-      
+        enemy_set=players[rand(players.size)]
+        
+        for p in players
+            while p==enemy_set
+                enemy_set=players[rand(players.size)]
+            end
+            
+            p.enemy=enemy_set;
+            
+        end
     end
     
     def developCombat
@@ -69,6 +102,12 @@ class Napakalaki
     end
     
     def endOfGame(result)
-      
+      end_game=false
+        
+      if(result==CombatResult.WINGAME)
+          end_game=true;
+      end
+        
+      return end_game;
     end
 end
