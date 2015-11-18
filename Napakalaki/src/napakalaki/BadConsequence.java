@@ -105,7 +105,7 @@ public class BadConsequence {
             return false;
     }
     
-    // Metodo que 
+    // Metodo que comprueba si una BadConsequence esta vacia
     public boolean isEmpty(){
         boolean vacio=false;
         if((nHiddenTreasures==0) && (nVisibleTreasures==0)&& (death==false)
@@ -113,6 +113,11 @@ public class BadConsequence {
             vacio=true;
         
         return vacio;
+    }
+    
+    // Metodo que substrae un tesoro de los tesoros visibles de BadConsequence
+    public void substractVisibleTreasure(Treasure t){
+        
     }
     
     // Método toString

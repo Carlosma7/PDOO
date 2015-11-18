@@ -171,7 +171,17 @@ public class Player {
     }
     
     public Treasure stealTreasure(){
-        return null;
+        
+        Treasure treasure =null;
+        
+        if(this.canISteal){
+            if(enemy.canYouGiveMeATreasure()){
+                treasure= enemy.giveMeATreasure();
+                hiddenTreasures.add(treasure);
+                this.haveStolen();
+            }
+        }
+        return treasure;
     
     }
     /*

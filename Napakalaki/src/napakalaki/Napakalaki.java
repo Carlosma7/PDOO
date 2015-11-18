@@ -19,6 +19,7 @@ public class Napakalaki {
     //Variables de otras clases
     private Monster currentMonster;
     private Player currentPlayer;
+    private CardDealer dealer=null;
     private ArrayList <Player> players;
     
     private Napakalaki(){
@@ -107,7 +108,10 @@ public class Napakalaki {
     }
     
     public void initGame(ArrayList<String>players){
-    
+        this.initPlayers(players);
+        this.setEnemies();
+        dealer.initCards();
+        this.nextTurn();
     }
     
 
