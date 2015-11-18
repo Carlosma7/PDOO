@@ -86,9 +86,62 @@ public class Player {
     
     }
     
-    private boolean canMakeTreasureVisible(Treasure t){
-        
-        return false;
+    //Comprueba si el tesoro (t) se puede pasar de oculto a visible, 
+    //según las reglas del juego
+    public boolean canMakeTreasureVisible(Treasure t) {
+
+        boolean result = false;
+
+        //Comprobamos que no tenga ya 4 tesoros visibles
+        if (this.visibleTreasures.size() < 4) {
+            TreasureKind type = t.getType();
+            
+            if(type==TreasureKind.ONEHAND){
+                
+                    //Si está equipado con dos manos no puede agregar un tesoro de una mano
+                    if (UsingTreasureKind(TreasureKind.BOTHHANDS)) {
+                        result = false;
+                    } else {
+
+                        //Recorremos los tesoros visibles para ver si ya tiene alguno de una mano (0, 1 o 2)
+                        int i = 0;
+                        for (Treasure tv : this.visibleTreasures) {
+                            if (tv.getType().equals(TreasureKind.ONEHAND)) {
+                                i++;
+                            }
+                        }
+
+                        if (i == 2) {
+                            //Si están las dos manos ocupadas no puede
+                            result = false;
+                        } else {
+                            //En caso contrario si que puede
+                            result = true;
+                        }
+                    }
+            }else{
+                    result = !UsingTreasureKind(type);
+                }
+        }
+
+        return result;
+    }
+    
+    
+    //Metodo que comprueba si un Tipo de Tesoro está en uso
+    private boolean UsingTreasureKind(TreasureKind type) {
+        boolean result = false;
+        for (Treasure tv : this.visibleTreasures) {
+
+            if (type.equals(tv.getType())) {
+
+                result = true;
+                break;
+
+            }
+
+        }
+        return result;
     }
     /*
     

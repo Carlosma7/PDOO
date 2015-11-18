@@ -132,6 +132,32 @@ public class BadConsequence {
                 specificHiddenTreasures.remove(t);
     }
     
+    // Metodo que ajusta
+    public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v,ArrayList<Treasure> h){
+        ArrayList<TreasureKind> tVisible = new ArrayList();
+        ArrayList<TreasureKind> tHidden = new ArrayList();
+        
+        //Recorremos los tesoros
+        for (Treasure t: v) {
+            //Si no contiene el TreasureKind lo agregamos
+            if (!tVisible.contains(t.getType())) {
+                tVisible.add(t.getType());
+            }
+        }
+        
+        //Recorremos los tesoros
+        for (Treasure t: h) {
+            //Si no contiene el TreasureKind lo agregamos
+            if (!tHidden.contains(t.getType())) {
+                tHidden.add(t.getType());
+            }
+        }
+
+        BadConsequence bs = new BadConsequence(this.text, 0, tVisible, tHidden);
+
+        return bs;
+    }
+    
     // Método toString
     @Override   //Estamos sobreescibribiendo un método padre de Java
     public String toString(){
