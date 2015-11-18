@@ -256,13 +256,49 @@ public class CardDealer {
     }
     
     public Treasure nextTreasure(){
-  
-        return null;
+        Treasure treasure_get;
+        if(!unusedTreasures.isEmpty()){
+            treasure_get=unusedTreasures.get(0);
+            usedTreasures.add(treasure_get);
+            unusedTreasures.remove(treasure_get);
+        }else{
+            for(Treasure t:usedTreasures){
+                unusedTreasures.add(t);
+                usedTreasures.remove(t);
+            }
+            
+            shuffleMonsters();
+            
+            //Cogemos el monstruo del nuevo mazo
+            treasure_get=unusedTreasures.get(0);
+            usedTreasures.add(treasure_get);
+            unusedTreasures.remove(treasure_get);
+        }
+            
+        return treasure_get;
     }
     
     public Monster nextMonster(){
-    
-        return null;
+        Monster monster_get;
+        if(!unusedMonster.isEmpty()){
+            monster_get=unusedMonster.get(0);
+            usedMonster.add(monster_get);
+            unusedMonster.remove(monster_get);
+        }else{
+            for(Monster m:usedMonster){
+                unusedMonster.add(m);
+                usedMonster.remove(m);
+            }
+            
+            shuffleMonsters();
+            
+            //Cogemos el monstruo del nuevo mazo
+            monster_get=unusedMonster.get(0);
+            usedMonster.add(monster_get);
+            unusedMonster.remove(monster_get);
+        }
+            
+        return monster_get;
     }
     
     /*

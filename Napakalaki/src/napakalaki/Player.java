@@ -1,6 +1,7 @@
 package napakalaki;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -193,8 +194,8 @@ public class Player {
     }
     
     private Treasure giveMeATreasure(){
-        
-        return null;
+        Random r = new Random();
+        return hiddenTreasures.get(r.nextInt(hiddenTreasures.size()));
     }
     /*
     Devuelve true si el jugador no ha robado ningún tesoro a su enemigo y false en

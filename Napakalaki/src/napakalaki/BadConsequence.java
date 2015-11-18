@@ -117,7 +117,19 @@ public class BadConsequence {
     
     // Metodo que substrae un tesoro de los tesoros visibles de BadConsequence
     public void substractVisibleTreasure(Treasure t){
-        
+        if(nVisibleTreasures!=0)
+            nVisibleTreasures=nVisibleTreasures+1;
+        else
+            specificVisibleTreasures.remove(t);
+    }
+    
+    // Metodo que substrae un tesoro de los tesoros visibles de BadConsequence
+    public void substractHiddenTreasure(Treasure t){
+        if(nHiddenTreasures!=0)
+            nHiddenTreasures=nHiddenTreasures+1;
+        else
+            if(!specificHiddenTreasures.isEmpty())
+                specificHiddenTreasures.remove(t);
     }
     
     // Método toString
