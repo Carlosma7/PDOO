@@ -47,6 +47,15 @@ class BadConsequence
     end
   end
   
+  def substractVisibleTreasure(treasure) 
+    
+    @someVisibleTreasures.delete(treasure.type);
+  end
+  
+  def substractHiddenTreasure(treasure) 
+    
+    @someVisibleTreasures.delete(treasure.type);
+  end
   
   
   #Consultores

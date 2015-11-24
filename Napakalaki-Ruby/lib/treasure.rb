@@ -6,7 +6,7 @@ class Treasure
   def initialize( n, g, bonus1, t)
     @name=n
     @bonus=bonus1
-    @treasure=t
+    @type=t
   end
     
     attr_reader:name

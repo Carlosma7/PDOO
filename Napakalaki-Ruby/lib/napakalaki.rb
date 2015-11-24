@@ -8,14 +8,9 @@ class Napakalaki
   
   include Singleton
   
-  def initialize(resultado)
-    @result=resultado
-    @players
-  end
-    
-    def Napakalaki
-    
-    end
+  #Atributos
+  attr_accessor :current_player, :players, :dealer, :current_monster
+  
     
     private def initPlayers(names)
         @players = Array.new# Inicializamos el array
@@ -74,31 +69,56 @@ class Napakalaki
     end
     
     def discardVisibleTreasures(treasures)
-      
+      for t in treasures
+        @currentPlayer.discardVisibleTreasure(t)
+        @dealer.giveTreasureBack(t)
+      end
     end
     
     def discardHiddenTreasures(treasures)
-      
+      for t in treasures
+        @currentPlayer.discardHiddenTreasure(t)
+        @dealer.giveTreasureBack(t)
+      end
     end
     
     def makeTreasuresVisible(treasures)
-      
+      for t in treasures
+            @currentPlayer.makeTreasureVisible (t)
+      end
     end
     
     def initGame(players)
-      
+      self.iniPlayers(players);
+      self.setEnemies;
+      @dealer.initCards;
+      self.nextTurn;
     end
     
     def getCurrentPlayer
-      
+      return @currentPlayer
     end
     
     def getCurrentMonster
-      
+      return @currentMonster
     end
     
     def nextTurn
-      
+      stateOK = next_turn_allowed
+      if stateOK then
+
+            @currentMonster = @dealer.nextMonster
+
+            @currentPlayer = nextPlayer
+
+            dead = @currentPlayer.isDead
+
+            if dead then
+              
+                @current_player.initTreasures
+
+            end
+      end
     end
     
     def endOfGame(result)

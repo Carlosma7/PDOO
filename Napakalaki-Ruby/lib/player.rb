@@ -1,44 +1,38 @@
 # Author: Javier Aranda
+require_relative 'treasure'
+require_relative 'monster'
+require_relative 'treasure_kind'
+require_relative 'combat_result'
+require_relative 'dice'
 
 class Player
   
+  #Atributos
+    attr_reader :dead, :name, :level, :visibleTreasures, :hiddenTreasures, :pendingBadConsequence
+  
   @@MAXLEVEL = 10
-  def initialize(name,level, dead=true, canISteal=true, enemy, visibleTreasures, 
-    hiddenTreasures,pendingBadConsequence)
-    @level=level
-    @name=name
-    @dead=dead
-    @canISteal=canISteal
- 
-    # Atributos de referencia
-    @enemy=enemy
-    @visibleTreasure=visibleTreasures
-    @hiddenTreasures=hiddenTreasures # array.new
-    @pendingBadConsequence=pendingBadConsequence
-  end
-  
-  # Consultores
-  attr_reader :name # Metodo getName()
-  attr_reader :level # Metodo getLevel()
-  attr_reader :canIsteal #Merodo canISteal()
-  
-  
-  # Constructor con el parametro nombre
-  def self.player (name)
-    new(name,0,false,false, enemy, )
+  def initialize(name)
+      @name = name
+      
+      @dead = false
+      
+      @level = 1
+      @visibleTreasures = Array.new
+      @hiddenTreasures = Array.new
+      
   end
   
   # ------------ Metodos publicos --------------------
   
   # Metodo isDead
   def isDead
-    @dead
+    return @dead
   end
   
   
   # Metodo getVisibleTreasures
   def getVisibleTreasures
-    
+    return @visibleTreasures
   end
   
   # Metodo combat
@@ -48,38 +42,89 @@ class Player
   
   # Metodo makeTreasureVisible
   def makeTreasureVisible (t)
-    
+    can_i = canMakeTreasureVisible(t)
+
+    if can_i then
+      @visibleTreasures << t
+      @hiddenTreasures.delete(t)
+    end
   end
   
   # Metodo discardVisibleTreasure
   def discardVisibleTreasure(t)
-    
+    @visibleTreasures.delete(t)
+
+    if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty then
+
+      @pendingBadStuff.substractVisibleTreasure(t)
+
+    end
+
+    dieIfNoTreasures
   end
   
   # Metodo discardHiddenTreasure
   def discardHiddenTreasure(t)
-    
+    @hiddenTreasures.delete(t)
+
+    if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty then
+
+      @pendingBadStuff.substractHiddenTreasure(t)
+
+    end
+
+    dieIfNoTreasures
   end
   
   # Metodo validState
 
-  def validState()
-    @pendigBadConsequence.isEmpty && @hiddenTreasures.length<=4
+  def validState
+    if @pendigBadConsequence.isEmpty && @hiddenTreasures.length<=4
+      return true
+    else
+      return false
+    end
   end
   
   # Metodo initTreaures
   def initTreasures
-    
+    dealer= CardDealer.instance
+    dice = Dice.instance
+        
+    self.bringToLife
+        
+    treasure = dealer.nextTreasure
+        
+    hiddenTreasures << treasure
+        
+    number=dice.nextNumber
+        
+    if number>1 then
+        treasure=dealer.nextTreasure
+        hiddenTreasures << treasure
+    end
+        
+    if number==6 then
+        treasure=dealer.nextTreasure
+        hiddenTreasures << treasure
+    end
   end
   
   # Metodo getLevels
   def getLevels
-    
+    return @level
   end
   
   # Metodo stealTreasure
-  def steadTreasure
+  def stealTreasure
     
+    if self.canISteal then
+      if @enemy.canYouGiveMeATreasure then
+        treasure = @enemy.giveMeATreasure
+        @hiddenTreasures << treasure
+        self.haveStolen
+      end
+    end
   end
   
   # Metodo setEnemy
@@ -90,12 +135,22 @@ class Player
   
   # Metodo canISteal
   def canISteal
-    
+    if canISteal==true
+      return true
+    else
+      return false
+    end
   end
   
   # Metodo discardAllTreasures
   def discardAllTreasures
+    for t in visibleTreasures
+      self.discardVisibleTreasures(t)
+    end
     
+    for t in hiddenTreasures
+      self.discardHiddenTreasures(t)
+    end
   end
   
   # --------------- Metodos Privados ----------
@@ -106,9 +161,9 @@ class Player
   end
   
   # Motodo getCombatLevel
-  private def getCombatLevel
-    nivel=level
-    for t in visibleTreasures
+  def getCombatLevel
+    nivel=@level
+    for t in @visibleTreasures
         nivel=nivel+t.bonus
     end
     
@@ -123,34 +178,112 @@ class Player
   end
   
   # Metodo decrementLevels
-  private def decrementLevels(l)
+  def decrementLevels(l)
     level = level-l
+    
+    if @level < 1 then
+      @level=1
+    end
   end
   
   # Metodo setPendingBadConsequence
-  private def setPendingBadConsequence(b)
-    @pendinBadConsequence = b
+  def setPendingBadConsequence(b)
+    @pendingBadConsequence = b
     
   end
   
   # Metodo applyPrize
   private def applyPrize(m)
+    nLevels=m.getLevelsGained
     
+    this.incrementLevels(nLevels)
+    
+    nTreasures=m.getTreasuresGained
+    
+    if nTreasures>0 then
+      dealer = CardDealer.instance
+      
+      for i in 1..nTreasures
+        t=dealer.nextTreasure
+        self.hiddenTreasures << t
+      end
+    end
   end
   
   # Metodo applyBadConsequence
   private def applyBadConsequence(m)
+    badConsequence=m.badConsequence
     
+    nLevels=badConsequence.levels
+    
+    self.decrementLevels(nLevels)
+    
+    pendingBad = badConsequence.adjustToFitTreasureLists(self.visibleTreasures, self.hiddenTreasures)
+    
+    self.setPendingBadConsequence(pendingBad)
   end
   
+  
   # Metodo canMakeTreasureVisible
-  private def canMakeTreasureVisible(t)
+  def canMakeTreasureVisible(t)
+
+      result = false
+
+      case t.type
+
+      when ONEHAND 
+        
+        #Si está equipado con dos manos no puede agregar un tesoro de una mano
+        if UsingTreasureKind(BOTHHAND) then
+          result = false
+        else
+
+          #Recorremos los tesoros visibles para ver si ya tiene alguno de una mano (0, 1 o 2)
+          i = 0
+          for tv in @visibleTreasures
+            if tv.type == ONEHAND then
+              i += 1
+            end
+                        
+          end
+
+          if i == 2 then
+            #Si están las dos manos ocupadas no puede
+            result = false
+          else
+            #En caso contrario si que puede
+            result = true
+          end
+        end
+
+      else  #El resto de casos, si esta en uso false, si no true
+        result = !UsingTreasureKind(t.type)
+
+      end
+
+      return result
+    end
     
-  end
+    #Este método lo he hecho personalmente para no duplicar codigo en el método anterior
+    def UsingTreasureKind(type) 
+
+      result = false
+      for tv in @visibleTreasures
+        if type == tv.type then
+
+          result = true
+          break
+
+        end
+
+      end
+      return result
+        
+    end
   
   # Metodo howManyVisibleTreasures
   private def howManyVisibleTreasures(tKind)
-    for t in visibleTreasures
+    for t in @visibleTreasures
       if(t.getType == tKind)
         @numeroDeTesoros = @numeroDeTesoros+1
       end
@@ -159,16 +292,17 @@ class Player
   end
   
   # Metodo dieIfNoTreasures
-  private def dieIfNoTreasures
-    if(visibleTreasure.isEmpty)
+  def dieIfNoTreasures
+    if @visibleTreasures.empty? && @hiddenTreasures.empty?
       @dead=true
     end
     
   end
   
-  # Metodo gifMeATreasure
-  private def gifMeATreasure
-    
+  # Metodo giveMeATreasure
+  def giveMeATreasure
+    n= rand(@hiddenTreasures.length)
+    return @hiddenTreasures[n]
   end
   
   # Metodo canYouGiveMeATreasure
