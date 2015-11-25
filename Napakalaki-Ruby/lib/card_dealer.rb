@@ -15,17 +15,17 @@ class CardDealer
   # ----------------- Metodos Publicos --------------------
   
   # Metodo getInstance
-  def getInstance()
+  def getInstance
     
   end
   
   # Metodo nextTreasure
-  def nextTreasure()
+  def nextTreasure
     
   end
   
   # Metodo nextMonster
-  def nextMonster()
+  def nextMonster
     
   end
   

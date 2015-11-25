@@ -134,28 +134,49 @@ public class BadConsequence {
     
     // Metodo que ajusta
     public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v,ArrayList<Treasure> h){
-        ArrayList<TreasureKind> tVisible = new ArrayList();
-        ArrayList<TreasureKind> tHidden = new ArrayList();
-        
-        //Recorremos los tesoros
-        for (Treasure t: v) {
-            //Si no contiene el TreasureKind lo agregamos
-            if (!tVisible.contains(t.getType())) {
-                tVisible.add(t.getType());
+        BadConsequence pendingBad;
+                
+        if(nVisibleTreasures!=0 || nHiddenTreasures!=0){    // Caso de que quiten nº de tesoros
+            int nV;
+            int nH;
+            
+            
+            //Ajustamos segun el tamaño de los visibles
+            if(nVisibleTreasures>v.size())
+                nV=v.size();
+            else
+                nV=nVisibleTreasures;
+            
+            //Ajustamos segun el tamaño de los no visibles
+            if(nHiddenTreasures>h.size())
+                nH=h.size();
+            else
+                nH=nHiddenTreasures;
+            
+            
+            pendingBad=new BadConsequence(this.text, 0, nV, nH);
+            
+        }else{  //Caso de que quiten tesoros especificos
+                ArrayList<TreasureKind> arr_nV= new ArrayList();
+                ArrayList<TreasureKind> arr_nH= new ArrayList();
+                
+                for(Treasure t: v){
+                    arr_nV.add(t.getType());   
+                }
+                
+                for(Treasure t: h){
+                    arr_nH.add(t.getType());
+                }
+                
+                arr_nV.retainAll(specificVisibleTreasures);
+                    
+                arr_nH.retainAll(specificHiddenTreasures);
+                
+                
+                pendingBad=new BadConsequence(this.text, 0, arr_nV, arr_nH);
             }
-        }
-        
-        //Recorremos los tesoros
-        for (Treasure t: h) {
-            //Si no contiene el TreasureKind lo agregamos
-            if (!tHidden.contains(t.getType())) {
-                tHidden.add(t.getType());
-            }
-        }
-
-        BadConsequence bs = new BadConsequence(this.text, 0, tVisible, tHidden);
-
-        return bs;
+    
+        return pendingBad;
     }
     
     // Método toString
