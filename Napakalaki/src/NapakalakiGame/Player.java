@@ -1,4 +1,4 @@
-package napakalaki;
+package NapakalakiGame;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -197,14 +197,14 @@ public class Player {
         return this.dead;
     }
     
-    public Treasure getHiddenTreasures(){
-        return null;
+    public ArrayList<Treasure> getHiddenTreasures(){
+        return this.hiddenTreasures;
     
     }
     
-    public Treasure getVisibleTreasure(){
+    public ArrayList<Treasure> getVisibleTreasures(){
     
-        return null;
+        return this.visibleTreasures;
     }
     
     public CombatResult combat(Monster m){

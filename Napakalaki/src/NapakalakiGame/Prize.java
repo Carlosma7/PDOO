@@ -1,6 +1,6 @@
 /* Clase Prize lo utilizaremos para el premio de los monstruos*/
 
-package napakalaki;
+package NapakalakiGame;
 
 /**
  *
