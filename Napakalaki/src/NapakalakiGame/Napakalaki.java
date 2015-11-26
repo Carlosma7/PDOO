@@ -19,7 +19,7 @@ public class Napakalaki {
     //Variables de otras clases
     private Monster currentMonster;
     private Player currentPlayer;
-    private CardDealer dealer=null;
+    private CardDealer dealer = CardDealer.getInstance();
     private ArrayList <Player> players;
 
     private Napakalaki() {
@@ -65,8 +65,11 @@ public class Napakalaki {
     private boolean nextTurnAllowed(){
         boolean permitido=false;
         
-        if(currentPlayer.validState())
-            permitido=true;
+        if (this.currentPlayer == null) {
+            permitido = true; //La primera vez currentPlayer está sin asignar
+        } else {
+            permitido = this.currentPlayer.validState();
+        }
         
         return permitido;
     }

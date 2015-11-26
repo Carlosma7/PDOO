@@ -25,6 +25,17 @@ public class Player {
     public Player (String name){
     
         this.name= name;
+        this.level=1;
+    }
+    
+    public Player(Player p) {
+        this.name = p.name;
+        this.level = p.level;
+        this.pendingBadConsequence = p.pendingBadConsequence;
+        this.dead = p.dead;
+        this.hiddenTreasures = p.hiddenTreasures;
+        this.visibleTreasures = p.visibleTreasures;
+
     }
     
     /*
@@ -68,6 +79,10 @@ public class Player {
     */
     private void decrementLevels(int l){
         level = level - l;
+        
+        if(level<=0){
+            level=1;
+        }
     }
     
     /*
@@ -264,10 +279,8 @@ public class Player {
     utiliza el método isEmpty de la clase BadConsequence.
     */
     public boolean validState(){
-        if (pendingBadConsequence.isEmpty() && hiddenTreasures.size() < 4)
-            return true;
-        else
-            return false;
+               
+        return this.pendingBadConsequence == null || (this.pendingBadConsequence.isEmpty() && this.hiddenTreasures.size() <= 4);
     }
     
     public void initTreasures(){
@@ -362,5 +375,9 @@ public class Player {
             this.discarHiddenTreasure(t);
     }
         
-    
+    // Método toString
+    @Override   //Estamos sobreescibribiendo un método padre de Java
+    public String toString(){
+        return name + ". Nivel: " + Integer.toString(level);
+    }
 }

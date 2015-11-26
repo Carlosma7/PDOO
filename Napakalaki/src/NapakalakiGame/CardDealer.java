@@ -28,6 +28,7 @@ public class CardDealer {
     */
     private void initTreasureCardDeck(){
         unusedTreasures = new ArrayList();// Inicializamos el array
+        usedTreasures = new ArrayList();
         
         //Creamos los tesoros
         //Creacion de Tesoro ¡Sí mi amo!
@@ -126,6 +127,7 @@ public class CardDealer {
     
     private void initMonsterCardDeck(){
         unusedMonster = new ArrayList();// Inicializamos el array de monstruos
+        usedMonster = new ArrayList();
         
         // Inicializamos las variables
         BadConsequence badConsequence;
@@ -305,7 +307,6 @@ public class CardDealer {
     Introduce en el mazo de descartes de tesoros (usedTreasures) el tesoro t.
     */
     public void giveTreasureBack(Treasure t){
-        usedTreasures = new ArrayList();
         usedTreasures.add(t);
     }
     
@@ -313,13 +314,15 @@ public class CardDealer {
     Introduce en el mazo de descartes de monstruos (usedMonsters) al monstruo m.
     */
     public void giveMonsterBack(Monster m){
-        usedMonster = new ArrayList();
         usedMonster.add(m);
     }
     
     public void initCards(){
         this.initTreasureCardDeck();
+        this.shuffleTreasures();
+        
         this.initMonsterCardDeck();
+        this.shuffleMonsters();
     }
     
     
