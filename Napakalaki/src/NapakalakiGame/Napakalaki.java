@@ -13,7 +13,7 @@ import java.util.Random;
  * @author carlos
  */
 public class Napakalaki {
-    private static final Napakalaki instance = new Napakalaki();
+    private static Napakalaki instance = null;
     private CombatResult result;
     
     //Variables de otras clases
@@ -21,9 +21,8 @@ public class Napakalaki {
     private Player currentPlayer;
     private CardDealer dealer=null;
     private ArrayList <Player> players;
-    
-    private Napakalaki(){
-        
+
+    private Napakalaki() {
     }
     
     private void initPlayers(ArrayList<String> names){
@@ -86,9 +85,11 @@ public class Napakalaki {
         }
     }
     
-    public static Napakalaki getInstance(){
-        
-        return null;
+    public static Napakalaki getInstance() {
+        if (instance == null) {
+            instance = new Napakalaki();
+        }
+        return instance;
     }
     
     public CombatResult developCombat(){
