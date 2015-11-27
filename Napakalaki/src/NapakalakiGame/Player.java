@@ -368,10 +368,13 @@ public class Player {
     }
     
     public void discardAllTreasures(){
-        for(Treasure t:visibleTreasures)
+        ArrayList<Treasure> copiavisibleTreasure= new ArrayList(visibleTreasures);
+        ArrayList<Treasure> copiahiddenTreasure= new ArrayList(visibleTreasures);
+        
+        for(Treasure t:copiavisibleTreasure)
             this.discardVisibleTreasure(t);
         
-        for(Treasure t:hiddenTreasures)
+        for(Treasure t:copiahiddenTreasure)
             this.discarHiddenTreasure(t);
     }
         
