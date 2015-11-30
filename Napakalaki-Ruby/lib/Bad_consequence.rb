@@ -4,6 +4,7 @@ class BadConsequence
   
   @@MAXTREASURES=10
   
+  
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,
     someSpecificVisibleTreasures, someSpecificHiddenTreasures, death)
     @text=aText    # Mensaje de mal rollo
@@ -37,6 +38,11 @@ class BadConsequence
   def self.newDeath (aText)
     
     new(aText, 0, 0, 0, 0, 0, true)
+  end
+  
+  # Metodo que devuelve MAXTREASURES
+  def self.MAXTREASURES
+    @@MAXTREASURES
   end
   
   def isEmpty
@@ -128,6 +134,7 @@ class BadConsequence
   attr_reader:someVisibleTreasures
   attr_reader:someHiddenTreasures
   attr_reader:death
+  attr_reader:MAXTREASURES
               
   def to_s
   "Texto: #{@text} \nNiveles perdidos: #{@levels} \nTesoros visibles: #{@nVisibleTreasures} \nTesoros ocultos: #{@nHiddenTreasures}

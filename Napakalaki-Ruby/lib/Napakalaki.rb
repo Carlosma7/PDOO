@@ -3,6 +3,8 @@
 # and open the template in the editor.
 
 require "singleton"
+require_relative "Player"
+require_relative "Card_dealer"
 
 class Napakalaki
   
@@ -12,41 +14,57 @@ class Napakalaki
   attr_accessor :current_player, :players, :dealer, :current_monster
   
     
-    private def initPlayers(names)
-        @players = Array.new# Inicializamos el array
+    def initPlayers(names)
+      @dealer = CardDealer.instance
+      
+      @players = Array.new# Inicializamos el array
         for n in names
            players << Player.new(n)
         end
     end
     
-    private def nextPlayer
-        nextPlayer  #Variable a devolver por el metodo
+    def nextPlayer
         
-        tam=players.size #Guardamos el tamaño del array de jugadores
-        turno #Turno del jugador que sea
-        
-               
-        if()  #No iniciada
-            turno=rand(tam)
-            nextPlayer=players[turno]
-        else  #Iniciada
-            if(turno==tam-1)
-                turno=0
+        total_of_players = @players.length
+
+        # Primer jugador de la partida
+        if (@currentPlayer == nil) then
+            
+            
+            indice_current = rand(total_players)
+            
+        else
+
+            indice_jugador_actual = @players.index(@currentPlayer)
+
+            if indice_jugador_actual == total_players then
+                #Si es el último seleccionamos el primero
+                indice_current = 0
+
             else
-                turno=turno+1
+                #Seleccionamos el siguiente
+                indice_current = indice_jugador_actual + 1
             end
-            nextPlayer=players[turno]
+
         end
+
+        prox_jugador = @players.at(indice_current)
         
-        return nextPlayer
+        #Establecemos el siguiente jugador
+        @currentPlayer = prox_jugador
+
+        return @currentPlayer
     end
+    
     
     def nextTurnAllowed
       permitido=false
         
-      if(currentPlayer.validState)
-          permitido=true
-      end
+      if @current_player == nil then
+            permitido = true
+        else
+            permitido = @currentPlayer.validState
+        end
         
       return permitido
     end
@@ -89,7 +107,7 @@ class Napakalaki
     end
     
     def initGame(players)
-      self.iniPlayers(players);
+      self.initPlayers(players);
       self.setEnemies;
       @dealer.initCards;
       self.nextTurn;
@@ -104,7 +122,7 @@ class Napakalaki
     end
     
     def nextTurn
-      stateOK = next_turn_allowed
+      stateOK = nextTurnAllowed
       if stateOK then
 
             @currentMonster = @dealer.nextMonster

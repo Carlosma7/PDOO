@@ -1,14 +1,15 @@
 # Author: Javier Aranda
-require_relative 'treasure'
-require_relative 'monster'
-require_relative 'treasure_kind'
-require_relative 'combat_result'
-require_relative 'dice'
+require_relative 'Treasure'
+require_relative 'Monster'
+require_relative 'Treasure_kind'
+require_relative 'Combat_result'
+require_relative 'Dice'
 
 class Player
   
   #Atributos
     attr_reader :dead, :name, :level, :visibleTreasures, :hiddenTreasures, :pendingBadConsequence
+    attr_accessor :enemy
   
   @@MAXLEVEL = 10
   def initialize(name)
@@ -16,6 +17,8 @@ class Player
       
       @dead = false
       
+      @enemy=nil
+    
       @level = 1
       @visibleTreasures = Array.new
       @hiddenTreasures = Array.new
@@ -156,7 +159,7 @@ class Player
   # --------------- Metodos Privados ----------
   
   # Motodo bringToLife
-  private def bringToLife
+  def bringToLife
     @dead = false
   end
   
@@ -172,7 +175,7 @@ class Player
   end
   
   # Metodo incrementLevels
-  private def incrementLevels(l)
+  def incrementLevels(l)
     level = level + l
     
   end
@@ -193,7 +196,7 @@ class Player
   end
   
   # Metodo applyPrize
-  private def applyPrize(m)
+  def applyPrize(m)
     nLevels=m.getLevelsGained
     
     this.incrementLevels(nLevels)
@@ -211,7 +214,7 @@ class Player
   end
   
   # Metodo applyBadConsequence
-  private def applyBadConsequence(m)
+  def applyBadConsequence(m)
     badConsequence=m.badConsequence
     
     nLevels=badConsequence.levels
@@ -282,7 +285,7 @@ class Player
     end
   
   # Metodo howManyVisibleTreasures
-  private def howManyVisibleTreasures(tKind)
+  def howManyVisibleTreasures(tKind)
     for t in @visibleTreasures
       if(t.getType == tKind)
         @numeroDeTesoros = @numeroDeTesoros+1
@@ -306,7 +309,7 @@ class Player
   end
   
   # Metodo canYouGiveMeATreasure
-  private def canYouGiveMeATreasure
+  def canYouGiveMeATreasure
     if(@hiddenTreasures.isEmpty)
       return false
     else 
@@ -315,7 +318,7 @@ class Player
   end
   
   # Metodo haveStolen
-  private def haveStolen
+  def haveStolen
     @canISteal=false
     
   end
