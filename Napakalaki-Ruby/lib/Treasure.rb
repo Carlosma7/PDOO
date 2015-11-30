@@ -13,4 +13,8 @@ class Treasure
     attr_reader:bonus
     attr_reader:treasure    
     
+  def to_s
+  "#{@name}. Tipo #{@type}"
+  end
+    
 end

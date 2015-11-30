@@ -38,9 +38,31 @@ class Player
     return @visibleTreasures
   end
   
+  # Metodo getHiddenTreasures
+  def getHiddenTreasures
+    return @hiddenTreasures
+  end
+  
   # Metodo combat
   def combat (m)
-    
+        
+    myLevel= self.getCombatLevel
+    monsterLevel=m.getCombatLevel
+        
+    if (myLevel>monsterLevel)
+      self.applyPrize(m)
+            
+      if(this.level >MAXLEVEL)
+        result=CombatResult::WINGAME;
+      else
+        result=CombatResult::WIN;
+      end
+    else
+      this.applyBadConsequence(m);
+      result=CombatResult::LOSE;
+    end
+        
+    return result;
   end
   
   # Metodo makeTreasureVisible
@@ -321,6 +343,10 @@ class Player
   def haveStolen
     @canISteal=false
     
+  end
+  
+  def to_s
+  "#{@name}. Nivel: #{@level}"
   end
   
 end

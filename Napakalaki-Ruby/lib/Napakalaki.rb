@@ -31,7 +31,7 @@ class Napakalaki
         if (@currentPlayer == nil) then
             
             
-            indice_current = rand(total_players)
+            indice_current = rand(total_of_players)
             
         else
 

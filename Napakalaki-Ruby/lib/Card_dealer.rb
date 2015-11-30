@@ -14,73 +14,6 @@ class CardDealer
   attr_accessor :usedMonsters, :unusedMonsters, :usedTreasures, :unusedTreasures
   
   # ----------------- Metodos Publicos --------------------
-  
-  # Metodo nextTreasure
-  def nextTreasure
-      if @unusedTreasures.empty?
-        for t in @usedtreasures 
-          @unusedTreasures << t
-        end
-            
-        shuffleTreasures
-            
-        @usedtreasures.clear
-        
-      end
-      
-      t = @unusedTreasures.at(0)
-        
-      @usedtreasures<<t
-        
-      @unusedTreasures.delete(t);
-        
-      
-      return t
-  end
-  
-  # Metodo nextMonster
-  def nextMonster
-    if @unusedMonsters.empty?
-            
-        for t in @usedmonsters
-          @unusedMonsters << t
-        end
-           
-        shuffleMonsters
-            
-        @usedMonsters.clear
-        
-      end
-        
-      m = @unusedMonsters.at(0)
-        
-      @usedmonsters << m
-      
-      @unusedMonsters.delete(m);
-        
-      return m
-  end
-  
-  # Metodo giveTreasureBack
-  def giveTreasureBack(t)
-    @usedTreasures.push(t)
-  end
-  
-  # Metodo giveMonsterBack
-  def giveMonsterBack(m)
-    @usedMonsters.push(m)
-  end
-  
-  # Metodo 
-  def initCards
-    initTreasureCardDeck
-    shuffleTreasures
-        
-    initMonsterCardDeck
-    shuffleMonsters
-  end
-
-  
   # Metodo initTreasureCardDeck
   def initTreasureCardDeck
     @unusedTreasures=Array.new
@@ -308,6 +241,76 @@ class CardDealer
     3, [TreasureKind::SHOES,TreasureKind::ONEHAND,TreasureKind::HELMET,TreasureKind::BOTHHANDS,TreasureKind::ARMOR], 0)
   @unusedMonsters << Monster.new("Bicefalo", 20 , badConsequence, prize)
   end
+  
+  # Metodo nextTreasure
+  def nextTreasure
+      if @unusedTreasures.empty?
+        for t in @usedTreasures 
+          @unusedTreasures << t
+        end
+            
+        shuffleTreasures
+            
+        @usedTreasures.clear
+        
+      end
+      
+      t = @unusedTreasures.at(0)
+        
+      @usedTreasures<<t
+        
+      @unusedTreasures.delete(t);
+        
+      
+      return t
+  end
+  
+  # Metodo nextMonster
+  def nextMonster
+    if @unusedMonsters.empty?
+            
+        for t in @usedMonsters
+          @unusedMonsters << t
+        end
+           
+        shuffleMonsters
+            
+        @usedMonsters.clear
+        
+      end
+        
+      m = @unusedMonsters.at(0)
+        
+      @usedMonsters << m
+      
+      @unusedMonsters.delete(m);
+        
+      return m
+  end
+  
+  # Metodo giveTreasureBack
+  def giveTreasureBack(t)
+    @usedTreasures.push(t)
+  end
+  
+  # Metodo giveMonsterBack
+  def giveMonsterBack(m)
+    @usedMonsters.push(m)
+  end
+  
+  # Metodo 
+  def initCards
+    initTreasureCardDeck
+    shuffleTreasures
+        
+    initMonsterCardDeck
+    shuffleMonsters
+  end
+
+  
+  
+  
+  
   
   # Metodo shuffleTreasures
   def shuffleTreasures()
