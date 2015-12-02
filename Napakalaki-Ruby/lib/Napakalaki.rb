@@ -6,6 +6,7 @@ module NapakalakiGame
 require "singleton"
 require_relative "Player"
 require_relative "Card_dealer"
+require_relative "Treasure"
 
 class Napakalaki
   
@@ -18,7 +19,7 @@ class Napakalaki
     def initPlayers(names)
       @dealer = CardDealer.instance
       
-      @players = Array.new# Inicializamos el array
+      @players = Array.new # Inicializamos el array
         for n in names
            players << Player.new(n)
         end
@@ -37,8 +38,8 @@ class Napakalaki
         else
 
             indice_jugador_actual = @players.index(@currentPlayer)
-
-            if indice_jugador_actual == total_of_players then
+      
+            if indice_jugador_actual == total_of_players-1 then
                 #Si es el último seleccionamos el primero
                 indice_current = 0
 
@@ -49,7 +50,8 @@ class Napakalaki
 
         end
 
-      @currentPlayer = @players.at(indice_current)
+      
+      @currentPlayer = @players[indice_current]
 
         return @currentPlayer
     end
@@ -126,8 +128,6 @@ class Napakalaki
       if stateOK then
 
             @currentMonster = @dealer.nextMonster
-            
-            #@currentPlayer=Player.new("Prueba")
 
             @currentPlayer = nextPlayer
 
@@ -135,10 +135,12 @@ class Napakalaki
 
             if dead then
               
-                @current_player.initTreasures
+                @currentPlayer.initTreasures
 
             end
       end
+      
+      return stateOK
     end
     
     def endOfGame(result)

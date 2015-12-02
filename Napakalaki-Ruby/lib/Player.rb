@@ -88,7 +88,7 @@ class Player
 
     end
 
-    dieIfNoTreasures
+    self.dieIfNoTreasures
   end
   
   # Metodo discardHiddenTreasure
@@ -120,13 +120,13 @@ class Player
     dice = Dice.instance
         
     self.bringToLife
-        
+    
     treasure = dealer.nextTreasure
         
     @hiddenTreasures << treasure
-        
+    
     number=dice.nextNumber
-        
+    
     if number>1 then
         treasure=dealer.nextTreasure
         @hiddenTreasures << treasure

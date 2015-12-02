@@ -7,8 +7,8 @@ class Dice
   
   include Singleton
     
-  def public nextNumber
-     n= rand(7)
+  def nextNumber
+     n= rand(6)+1 #Entre 1 y 6
      return n
   end
 end

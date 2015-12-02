@@ -5,6 +5,7 @@ module NapakalakiGame
 
 require 'singleton'
 require_relative "Bad_consequence"
+require_relative "Treasure"
 
 class CardDealer
   
@@ -21,7 +22,6 @@ class CardDealer
     
     #Creacion de Tesoro ¡Sí mi amo!
     @unusedTreasures << Treasure.new("¡Si mi amo!", 0, 4,TreasureKind::HELMET)
-
     #Creacion de Tesoro Capucha de Cthulhu
     @unusedTreasures << Treasure.new("Capucha de Cthulhu", 0, 3,TreasureKind::HELMET)
 
@@ -111,7 +111,6 @@ class CardDealer
 
     #Creacion de Tentaculo de pega
     @unusedTreasures << Treasure.new("Tentaculo de pega", 0, 2,TreasureKind::HELMET)
-    
   end
   
   # Metodo initMonsterCardDeck
@@ -260,7 +259,6 @@ class CardDealer
       @usedTreasures<<t
         
       @unusedTreasures.delete(t);
-        
       
       return t
   end
@@ -314,12 +312,12 @@ class CardDealer
   
   # Metodo shuffleTreasures
   def shuffleTreasures()
-    @unusedTreasures = @unusedTreasures.sort_by { rand }
+    @unusedTreasures = @unusedTreasures.shuffle
   end
   
   # Metodo shuffleMonsters
   def shuffleMonsters()
-    @unusedMonsters = @unusedMonsters.sort_by { rand }
+    @unusedMonsters = @unusedMonsters.shuffle
   end
 end
 
