@@ -133,11 +133,11 @@ class Napakalaki
 
             dead = @currentPlayer.isDead
 
-            if dead then
+            #if dead then
               
                 @currentPlayer.initTreasures
 
-            end
+            #end
       end
       
       return stateOK

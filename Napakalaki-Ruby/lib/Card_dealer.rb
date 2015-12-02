@@ -154,12 +154,6 @@ class CardDealer
   tesoros ocultos.",2 , 0, 2)
   @unusedMonsters << Monster.new("Semillas Cthulhu",4,badConsequence,prize)
 
-  # Semillas Cthulhu
-  prize = Prize.new(2,1)
-  badConsequence = BadConsequence.newLevelNumberOfTreasures("Pierdes 2 niveles y 2
-  tesoros ocultos.",2 , 0, 2)
-  @unusedMonsters << Monster.new("Semillas Cthulhu",4,badConsequence,prize)
-
   # Yskhtihyssg-Goth
   prize = Prize.new(3,1)
   badConsequence = BadConsequence.newDeath("No le hace gracia que
@@ -200,7 +194,7 @@ class CardDealer
   prize= Prize.new(1,1)
   badConsequence= BadConsequence.newLevelNumberOfTreasures("Da mucho asquito.
     Pierde 3 niveles", 3, 0, 0)
-  @unusedMonsters << Monster.new("Pillipolipo volante", 3, badConsequence, prize)
+  @unusedMonsters << Monster.new("Pollipolipo volante", 3, badConsequence, prize)
 
   # Bichgooth
   prize= Prize.new(1,1)

@@ -27,6 +27,7 @@ public class Treasure {
     public int getBonus(){
         return bonus;
     }
+    
     public TreasureKind getType(){
         return treasure;
     }

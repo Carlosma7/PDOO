@@ -79,12 +79,12 @@ class Player
   end
   
   # Metodo discardVisibleTreasure
-  def discardVisibleTreasure(t)
+  def discardVisibleTreasures(t)
     @visibleTreasures.delete(t)
 
     if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty then
 
-      @pendingBadStuff.substractVisibleTreasure(t)
+      @pendingBadConsequence.substractVisibleTreasure(t)
 
     end
 
@@ -92,12 +92,12 @@ class Player
   end
   
   # Metodo discardHiddenTreasure
-  def discardHiddenTreasure(t)
+  def discardHiddenTreasures(t)
     @hiddenTreasures.delete(t)
 
     if @pendingBadConsequence != nil && !@pendingBadConsequence.isEmpty then
 
-      @pendingBadStuff.substractHiddenTreasure(t)
+      @pendingBadConsequence.substractHiddenTreasure(t)
 
     end
 

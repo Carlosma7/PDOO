@@ -47,11 +47,27 @@ module NapakalakiGame
   end
   
   def isEmpty
-    if((@nVisibleTreasures==0) && (@nHiddenTreasures==0) && (@death==false) && (@someVisibleTreasures.isEmpty) && (@someHiddenTreasures.isEmpty))
-      true
+    empty=false
+    
+    if((@nVisibleTreasures==0) && (@nHiddenTreasures==0))
+      if ((@someVisibleTreasures==0) && (@someHiddenTreasures==0))
+        true
+      else if((@someVisibleTreasures.empty?) && (@someHiddenTreasures.empty?))
+              true
+           else
+              false
+           end
+      end
+      
     else
       false
     end
+    
+    if @death==true
+      empty=false
+    end
+    
+    return empty
   end
   
   def substractVisibleTreasure(treasure) 
@@ -65,7 +81,7 @@ module NapakalakiGame
   end
   
   def adjustToFitTreasureLists(v,h)
-    if @nVisibleTreasures!=0 && @nHiddenTreasures then
+    if @nVisibleTreasures!=0 || @nHiddenTreasures!=0 then
       
       #Ajustamos segun el tamaño de los visibles
       if @nVisibleTreasures>v.length 
@@ -94,15 +110,16 @@ module NapakalakiGame
       
       # Copiamos los tipos de tesoros de v
       for t in v
-        copy_visibles << t.getType
+        copy_visibles << t.type
       end
       
       # Copiamos los tipos de tesoros de h
       for t in h
-        copy_hidden << t.getType
+        copy_hidden << t.type
       end
       
       # Guardamos los valores comunes
+      if @someVisibleTreasures!=0
       for t in copy_visibles
         if @someVisibleTreasures.index(t)!=nil then
           nV << t
@@ -110,12 +127,17 @@ module NapakalakiGame
         end
       end
       
+      end
+      
       # Guardamos los valores comunes
+      if @someHiddenTreasures!=0
       for t in copy_hidden
         if @someHiddenTreasures.index(t)!=nil then
           nH << t
           @someHiddenTreasures.delete_at(@someHiddenTreasures.index(t))
         end
+      end
+      
       end
       
       pending=BadConsequence.newLevelSpecificTreasures(@text,@levels,nV,nH)
