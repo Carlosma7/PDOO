@@ -18,7 +18,7 @@ class Player
   def initialize(name)
       @name = name
       
-      @dead = false
+      @dead = true
       
       @enemy=nil
       @canISteal=true
