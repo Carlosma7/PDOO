@@ -1,5 +1,6 @@
 # Author: Carlos
-
+module NapakalakiGame
+  
 require "singleton"
 
 class Dice
@@ -10,4 +11,6 @@ class Dice
      n= rand(7)
      return n
   end
+end
+
 end

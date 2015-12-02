@@ -1,4 +1,7 @@
 # Author: Javier Aranda
+
+module NapakalakiGame
+  
 require_relative 'Treasure'
 require_relative 'Monster'
 require_relative 'Treasure_kind'
@@ -8,7 +11,7 @@ require_relative 'Dice'
 class Player
   
   #Atributos
-    attr_reader :dead, :name, :level, :visibleTreasures, :hiddenTreasures, :pendingBadConsequence
+    attr_reader :dead, :name, :level, :visibleTreasures, :hiddenTreasures, :pendingBadConsequence, :canISteal
     attr_accessor :enemy
   
   @@MAXLEVEL = 10
@@ -18,7 +21,7 @@ class Player
       @dead = false
       
       @enemy=nil
-    
+      @canISteal=true
       @level = 1
       @visibleTreasures = Array.new
       @hiddenTreasures = Array.new
@@ -34,12 +37,12 @@ class Player
   
   
   # Metodo getVisibleTreasures
-  def getVisibleTreasures
+  def getVisibleTreasures()
     return @visibleTreasures
   end
   
   # Metodo getHiddenTreasures
-  def getHiddenTreasures
+  def getHiddenTreasures()
     return @hiddenTreasures
   end
   
@@ -47,18 +50,18 @@ class Player
   def combat (m)
         
     myLevel= self.getCombatLevel
-    monsterLevel=m.getCombatLevel
+    monsterLevel=m.combatLevel
         
     if (myLevel>monsterLevel)
       self.applyPrize(m)
             
-      if(this.level >MAXLEVEL)
+      if(self.level >MAXLEVEL)
         result=CombatResult::WINGAME;
       else
         result=CombatResult::WIN;
       end
     else
-      this.applyBadConsequence(m);
+      self.applyBadConsequence(m);
       result=CombatResult::LOSE;
     end
         
@@ -120,18 +123,18 @@ class Player
         
     treasure = dealer.nextTreasure
         
-    hiddenTreasures << treasure
+    @hiddenTreasures << treasure
         
     number=dice.nextNumber
         
     if number>1 then
         treasure=dealer.nextTreasure
-        hiddenTreasures << treasure
+        @hiddenTreasures << treasure
     end
         
     if number==6 then
         treasure=dealer.nextTreasure
-        hiddenTreasures << treasure
+        @hiddenTreasures << treasure
     end
   end
   
@@ -160,7 +163,7 @@ class Player
   
   # Metodo canISteal
   def canISteal
-    if canISteal==true
+    if @canISteal==true
       return true
     else
       return false
@@ -204,7 +207,7 @@ class Player
   
   # Metodo decrementLevels
   def decrementLevels(l)
-    level = level-l
+    @level = @level-l
     
     if @level < 1 then
       @level=1
@@ -332,7 +335,7 @@ class Player
   
   # Metodo canYouGiveMeATreasure
   def canYouGiveMeATreasure
-    if(@hiddenTreasures.isEmpty)
+    if(@hiddenTreasures.empty?)
       return false
     else 
       return true
@@ -349,4 +352,6 @@ class Player
   "#{@name}. Nivel: #{@level}"
   end
   
+end
+
 end

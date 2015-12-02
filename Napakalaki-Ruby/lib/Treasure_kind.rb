@@ -1,3 +1,5 @@
+module NapakalakiGame
+  
 module TreasureKind
   
     ARMOR=:armor
@@ -6,4 +8,5 @@ module TreasureKind
     HELMET=:helmet
     SHOES=:shoes
     
+end
 end

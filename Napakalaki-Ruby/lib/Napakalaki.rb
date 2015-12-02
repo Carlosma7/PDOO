@@ -1,7 +1,8 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-
+module NapakalakiGame
+  
 require "singleton"
 require_relative "Player"
 require_relative "Card_dealer"
@@ -11,7 +12,7 @@ class Napakalaki
   include Singleton
   
   #Atributos
-  attr_accessor :current_player, :players, :dealer, :current_monster
+  attr_accessor :currentPlayer, :players, :dealer, :currentMonster
   
     
     def initPlayers(names)
@@ -37,7 +38,7 @@ class Napakalaki
 
             indice_jugador_actual = @players.index(@currentPlayer)
 
-            if indice_jugador_actual == total_players then
+            if indice_jugador_actual == total_of_players then
                 #Si es el último seleccionamos el primero
                 indice_current = 0
 
@@ -48,10 +49,7 @@ class Napakalaki
 
         end
 
-        prox_jugador = @players.at(indice_current)
-        
-        #Establecemos el siguiente jugador
-        @currentPlayer = prox_jugador
+      @currentPlayer = @players.at(indice_current)
 
         return @currentPlayer
     end
@@ -83,7 +81,9 @@ class Napakalaki
     end
     
     def developCombat
-      
+      combat = @currentPlayer.combat(self.currentMonster)
+        
+       return combat;
     end
     
     def discardVisibleTreasures(treasures)
@@ -126,6 +126,8 @@ class Napakalaki
       if stateOK then
 
             @currentMonster = @dealer.nextMonster
+            
+            #@currentPlayer=Player.new("Prueba")
 
             @currentPlayer = nextPlayer
 
@@ -148,4 +150,6 @@ class Napakalaki
         
       return end_game;
     end
+end
+
 end

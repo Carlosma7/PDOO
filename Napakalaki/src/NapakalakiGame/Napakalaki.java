@@ -83,7 +83,7 @@ public class Napakalaki {
                 enemy_set=players.get(r.nextInt(players.size()));
             }
             
-            p.enemy=enemy_set;
+            p.setEnemy(enemy_set);
             
         }
     }

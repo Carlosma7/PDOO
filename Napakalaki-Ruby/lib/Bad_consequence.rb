@@ -1,4 +1,5 @@
-class BadConsequence
+module NapakalakiGame
+  class BadConsequence
   
   private_class_method:new
   
@@ -141,4 +142,6 @@ class BadConsequence
 Tesoro Especifico visible: #{@someVisibleTreasures} \nTesoro Especifico oculto: #{@someHiddenTreasures} \nMuerte: #{@death}"
   end
  
+end
+
 end

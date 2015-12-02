@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 # # Autor Javier Aranda
-
+module NapakalakiGame
 
 require 'singleton'
 require_relative "Bad_consequence"
@@ -249,7 +249,7 @@ class CardDealer
           @unusedTreasures << t
         end
             
-        shuffleTreasures
+        self.shuffleTreasures
             
         @usedTreasures.clear
         
@@ -321,4 +321,6 @@ class CardDealer
   def shuffleMonsters()
     @unusedMonsters = @unusedMonsters.sort_by { rand }
   end
+end
+
 end
