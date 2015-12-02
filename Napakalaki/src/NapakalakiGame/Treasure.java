@@ -7,14 +7,12 @@ package NapakalakiGame;
 public class Treasure {
     private String name;
     private int bonus;
-    private int gold_coins;
     private TreasureKind treasure;
     
     
-    Treasure(String n, int g, int bonus1, TreasureKind t){
+    Treasure(String n, int bonus1, TreasureKind t){
         name=n;
         bonus=bonus1;
-        gold_coins=g;
         treasure=t;
     }
     

@@ -32,97 +32,97 @@ public class CardDealer {
         
         //Creamos los tesoros
         //Creacion de Tesoro ¡Sí mi amo!
-        unusedTreasures.add(new Treasure("¡Si mi amo!", 0, 4,TreasureKind.HELMET));
+        unusedTreasures.add(new Treasure("¡Si mi amo!", 4,TreasureKind.HELMET));
         
         //Creacion de Tesoro Capucha de Cthulhu
-        unusedTreasures.add(new Treasure("Capucha de Cthulhu", 0, 3,TreasureKind.HELMET));
+        unusedTreasures.add(new Treasure("Capucha de Cthulhu", 3,TreasureKind.HELMET));
         
         //Creacion de Tesoro Botas de lluvia acida
-        unusedTreasures.add(new Treasure("Botas de lluvia acida", 0, 1,TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Botas de lluvia acida", 1,TreasureKind.BOTHHANDS));
         
         //Creacion de Tesoro Ametralladora Thompson
-        unusedTreasures.add(new Treasure("Ametralladora Thompson", 0, 4,TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Ametralladora Thompson", 4,TreasureKind.BOTHHANDS));
         
         //Creacion de Tesoro Clavo de rail ferroviario
-        unusedTreasures.add(new Treasure("Clavo de rail ferroviario", 0, 3,TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Clavo de rail ferroviario", 3,TreasureKind.ONEHAND));
         
         //Creacion de Tesoro Fez alopodo
-        unusedTreasures.add(new Treasure("Fez alopodo", 0, 3,TreasureKind.HELMET));        
+        unusedTreasures.add(new Treasure("Fez alopodo", 3,TreasureKind.HELMET));        
         
         //Creacion de Tesoro El aparato del Pr. Tesla
-        unusedTreasures.add(new Treasure("El aparato del Pr. Tesla", 0, 4,TreasureKind.ARMOR));
+        unusedTreasures.add(new Treasure("El aparato del Pr. Tesla", 4,TreasureKind.ARMOR));
         
         //Creacion de Tesoro Insecticida
-        unusedTreasures.add(new Treasure("Insecticida", 0, 2,TreasureKind.ONEHAND));        
+        unusedTreasures.add(new Treasure("Insecticida", 2,TreasureKind.ONEHAND));        
         
         //Creacion de Garabato mistico
-        unusedTreasures.add(new Treasure("Insecticida", 0, 2,TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Insecticida", 2,TreasureKind.ONEHAND));
         
         //Creacion de Lanzallamas
-        unusedTreasures.add(new Treasure("Lanzallamas", 0, 4,TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Lanzallamas", 4,TreasureKind.BOTHHANDS));
         
         //Creacion de Necronomicon
-        unusedTreasures.add(new Treasure("Necronomicon", 0, 5,TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Necronomicon", 5,TreasureKind.BOTHHANDS));
         
         //Creacion de Necro-gnomicon
-        unusedTreasures.add(new Treasure("Necro-gnomicon", 0, 2,TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Necro-gnomicon", 2,TreasureKind.ONEHAND));
         
         //Creacion de Mazo de los antiguos
-        unusedTreasures.add(new Treasure("Mazo de los antiguos", 0, 3,TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Mazo de los antiguos", 3,TreasureKind.ONEHAND));
         
         //Creacion de Porra preternatural
-        unusedTreasures.add(new Treasure("Porra preternatural", 0, 2,TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Porra preternatural", 2,TreasureKind.ONEHAND));
         
         //Creacion de Varita de atizamiento
-        unusedTreasures.add(new Treasure("Varita de atizamiento", 0, 3,TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Varita de atizamiento", 3,TreasureKind.ONEHAND));
         
         //Creacion de Zapato deja-amigos
-        unusedTreasures.add(new Treasure("Zapato deja-amigos", 0, 1,TreasureKind.SHOES));
+        unusedTreasures.add(new Treasure("Zapato deja-amigos", 1,TreasureKind.SHOES));
         
         //Creacion de Botas de investigacion
-        unusedTreasures.add(new Treasure("Botas de investigacion", 0, 3,TreasureKind.HELMET));
+        unusedTreasures.add(new Treasure("Botas de investigacion", 3,TreasureKind.HELMET));
         
         //Creacion de A prueba de babas
-        unusedTreasures.add(new Treasure("A prueba de babas", 0, 2, TreasureKind.ARMOR));
+        unusedTreasures.add(new Treasure("A prueba de babas", 2, TreasureKind.ARMOR));
         
         //Creacion de Casco minero
-        unusedTreasures.add(new Treasure("Casco minero", 0, 2, TreasureKind.HELMET));
+        unusedTreasures.add(new Treasure("Casco minero", 2, TreasureKind.HELMET));
         
         //Creacion de Camiseta de la UGR
-        unusedTreasures.add(new Treasure("Camiseta de la UGR", 0, 1, TreasureKind.ARMOR));
+        unusedTreasures.add(new Treasure("Camiseta de la UGR", 1, TreasureKind.ARMOR));
         
         //Creacion de Cuchillo de sushi arcano
-        unusedTreasures.add(new Treasure("Cuchillo de sushi arcano", 0, 2, TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Cuchillo de sushi arcano", 2, TreasureKind.ONEHAND));
         
         //Creacion de Hacha prehistorica
-        unusedTreasures.add(new Treasure("Hacha prehistorica", 0, 2, TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Hacha prehistorica", 2, TreasureKind.ONEHAND));
         
         //Creacion de Gaita
-        unusedTreasures.add(new Treasure("Gaita", 0, 4, TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Gaita", 4, TreasureKind.BOTHHANDS));
         
         //Creacion de Escopeta de 3 caniones
-        unusedTreasures.add(new Treasure("Escopeta de 3 caniones", 0, 4, TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Escopeta de 3 caniones", 4, TreasureKind.BOTHHANDS));
         
         //Creacion de La rebeca metalica
-        unusedTreasures.add(new Treasure("La rebeca metalica", 0, 2, TreasureKind.ARMOR));
+        unusedTreasures.add(new Treasure("La rebeca metalica", 2, TreasureKind.ARMOR));
         
         //Creacion de Necro-comicon
-        unusedTreasures.add(new Treasure("Necro-comicon", 0, 1, TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Necro-comicon", 1, TreasureKind.ONEHAND));
         
         //Creacion de Linterna a 2 manos
-        unusedTreasures.add(new Treasure("Linterna a 2 manos", 0, 3, TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Linterna a 2 manos", 3, TreasureKind.BOTHHANDS));
         
         //Creacion de Necrotelecom
-        unusedTreasures.add(new Treasure("Necrotelecom", 0, 2, TreasureKind.HELMET));
+        unusedTreasures.add(new Treasure("Necrotelecom", 2, TreasureKind.HELMET));
         
         //Creacion de Necro-playboycon
-        unusedTreasures.add(new Treasure("Necro-playboycon", 0, 2, TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Necro-playboycon", 2, TreasureKind.ONEHAND));
         
         //Creacion de Shogulador
-        unusedTreasures.add(new Treasure("Shogulador", 0, 1, TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Shogulador", 1, TreasureKind.BOTHHANDS));
         
         //Creacion de Tentaculo de pega
-        unusedTreasures.add(new Treasure("Tentaculo de pega", 0, 2, TreasureKind.HELMET));
+        unusedTreasures.add(new Treasure("Tentaculo de pega", 2, TreasureKind.HELMET));
     }
     
     private void initMonsterCardDeck(){
