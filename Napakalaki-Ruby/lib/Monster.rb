@@ -8,11 +8,12 @@ require_relative "Bad_consequence"
 
 class Monster
   
-  def initialize(name,combatLevel,badConsequence,prize)
+  def initialize(name,combatLevel,badConsequence,prize,levelChangeAgainstCultistPlayer=0)
     @name=name
     @combatLevel=combatLevel
     @badConsequence=badConsequence
     @price=prize
+    @levelChangeAgainstCultistPlayer=levelChangeAgainstCultistPlayer
   end
   
   #Consultores
@@ -64,6 +65,10 @@ class Monster
   
   def getTreasuresGained
     @price.treasures
+  end
+  
+  def getCombatLevelAgainstCultistPlayer
+    return (@combatLevel+@levelChangeAgainstCultistPlayer)
   end
   
 end

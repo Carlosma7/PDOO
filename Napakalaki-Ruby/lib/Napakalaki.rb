@@ -85,7 +85,21 @@ class Napakalaki
     def developCombat
       combat = @currentPlayer.combat(self.currentMonster)
         
-       return combat;
+      if(combat==CombatResult.LOSEANDCONVERT)
+        carta=@dealer.nextCultist
+        nuevo_jugador= CultistPlayer.new(@currentPlayer, carta)
+           
+        # Obtenemos el indice del currentplayer por sustituirlo por el cultista
+        indice = players.indexOf(currentPlayer);
+
+        # Sustituimos el cultista
+        @players.delete(@current_player)
+        @players << nuevo_jugador
+
+        @currentPlayer = nuevo_jugador
+      end
+       
+      return combat;
     end
     
     def discardVisibleTreasures(treasures)

@@ -28,6 +28,15 @@ class Player
       
   end
   
+  def ConstructorCopia(p)
+    @name = p.name
+    @level = p.level
+    @pendingBadConsequence = p.pendingBadConsequence
+    @dead = p.dead
+    @hiddenTreasures = p.hiddenTreasures
+    @visibleTreasures = p.visibleTreasures
+  end
+  
   # ------------ Metodos publicos --------------------
   
   # Metodo isDead
@@ -50,7 +59,7 @@ class Player
   def combat (m)
         
     myLevel= self.getCombatLevel
-    monsterLevel=m.combatLevel
+    monsterLevel=getOponentLevel(m)
         
     if (myLevel>monsterLevel)
       self.applyPrize(m)
@@ -60,9 +69,12 @@ class Player
       else
         result=CombatResult::WIN;
       end
-    else
-      self.applyBadConsequence(m);
-      result=CombatResult::LOSE;
+    else if(shouldConvert)
+            result=CombatResult::LOSEANDCONVERT
+         else
+            applyBadConsequence(m)
+            result=CombatResult::LOSE
+      end
     end
         
     return result;
@@ -346,6 +358,23 @@ class Player
   def haveStolen
     @canISteal=false
     
+  end
+  
+  def getOponentLevel(m)
+    return m.getCombatLevel
+  end
+    
+  def shouldConvert
+    should=false
+    dice=Dice.instance
+        
+    resultado=dice.nextNumber
+        
+    if(resultado==1)
+      should=true
+    end
+        
+    return should
   end
   
   def to_s
