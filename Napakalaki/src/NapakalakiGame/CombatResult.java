@@ -10,6 +10,6 @@ package NapakalakiGame;
  * @author carlos
  */
 public enum CombatResult {
-    WINGAME,WIN,LOSE
+    WINGAME,WIN,LOSE, LOSEANDCONVERT
     
 }

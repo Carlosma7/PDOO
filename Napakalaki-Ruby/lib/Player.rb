@@ -11,7 +11,7 @@ require_relative 'Dice'
 class Player
   
   #Atributos
-    attr_reader :dead, :name, :level, :visibleTreasures, :hiddenTreasures, :pendingBadConsequence, :canISteal
+    attr_reader :dead, :name, :level, :visibleTreasures, :hiddenTreasures, :pendingBadConsequence, :canISteal, :MAXLEVEL
     attr_accessor :enemy
   
   @@MAXLEVEL = 10

@@ -16,9 +16,9 @@ public class Player {
     
     // Atributos obtenidos de otras clases
     private BadConsequence pendingBadConsequence;
-    private ArrayList <Treasure> hiddenTreasures = new ArrayList();
-    private ArrayList <Treasure> visibleTreasures = new ArrayList();
-    public Player enemy;
+    protected ArrayList <Treasure> hiddenTreasures = new ArrayList();
+    protected ArrayList <Treasure> visibleTreasures = new ArrayList();
+    protected Player enemy;
     
 
 
@@ -57,7 +57,7 @@ public class Player {
     los bonus que le proporcionan los tesoros que tenga equipados, según las 
     reglas del juego.
     */
-    private int getCombatLevel(){
+    protected int getCombatLevel(){
         int nivel = level;
         for (Treasure t: visibleTreasures)
             nivel = nivel + t.getBonus();
@@ -226,7 +226,7 @@ public class Player {
         CombatResult result;
         
         int myLevel= this.getCombatLevel();
-        int monsterLevel=m.getCombatLevel();
+        int monsterLevel=getOponentLevel(m);
         
         if(myLevel>monsterLevel){
             this.applyPrize(m);
@@ -237,8 +237,12 @@ public class Player {
                 result=CombatResult.WIN;
             
         }else{
-            this.applyBadConsequence(m);
-            result=CombatResult.LOSE;
+            if(this.shouldConvert()){
+                result=CombatResult.LOSEANDCONVERT;
+            }else{
+                this.applyBadConsequence(m);
+                result=CombatResult.LOSE;
+            }
         }
         
         return result;
@@ -376,6 +380,23 @@ public class Player {
         
         for(Treasure t:copiahiddenTreasure)
             this.discarHiddenTreasure(t);
+    }
+    
+    protected int getOponentLevel(Monster m){
+        return m.getCombatLevel();
+    }
+    
+    protected boolean shouldConvert(){
+        boolean should=false;
+        Dice dice=Dice.getInstance();
+        
+        int resultado=dice.nextNumber();
+        
+        if(resultado==1){
+            should=true;
+        }
+        
+        return should;
     }
         
     // Método toString

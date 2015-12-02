@@ -11,12 +11,24 @@ public class Monster {
     private BadConsequence bc;
     private Prize price;
     
+    // Para sectario
+    private int levelChangeAgainstCultistPlayer=0;
+    
     //Constructor
     Monster(String name, int level, BadConsequence bc, Prize price){
         setName(name);
         setCombatLevel(level);
         setBadConsequence(bc);
         setPrize(price);
+        levelChangeAgainstCultistPlayer=0;
+    }
+    
+    Monster(String name, int level, BadConsequence bc, Prize price, int LC){
+        setName(name);
+        setCombatLevel(level);
+        setBadConsequence(bc);
+        setPrize(price);
+        levelChangeAgainstCultistPlayer=LC;
     }
     
     // Modificadores
@@ -51,6 +63,10 @@ public class Monster {
     
     public Prize getPrize(){  //Consultor de Prize
         return price;
+    }
+    
+    public int getCombatLevelAgainstCultistPlayer(){
+        return (combatLevel+levelChangeAgainstCultistPlayer);
     }
     
     // Método Consulta monstruos con niveles igual o superior a 10

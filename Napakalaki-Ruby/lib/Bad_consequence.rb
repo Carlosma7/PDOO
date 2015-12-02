@@ -38,12 +38,15 @@ module NapakalakiGame
   #Llama al constructor
   def self.newDeath (aText)
     
-    new(aText, 0, 0, 0, 0, 0, true)
+    new(aText, 10, @@MAXTREASURES, @@MAXTREASURES, 0, 0, true)
+    
   end
   
   # Metodo que devuelve MAXTREASURES
   def self.MAXTREASURES
-    @@MAXTREASURES
+    @@MAXTREASURES=10
+    
+    return @@MAXTREASURES
   end
   
   def isEmpty

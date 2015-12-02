@@ -18,6 +18,8 @@ public class CardDealer {
     private ArrayList <Treasure> usedTreasures;
     private ArrayList <Treasure> unusedTreasures;
     
+    private ArrayList <Cultist> unusedCultists;
+    
     // Constructor de la clase
     private CardDealer(){
     
@@ -236,6 +238,70 @@ public class CardDealer {
                 3, new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS,TreasureKind.ONEHAND,TreasureKind.ONEHAND)),new ArrayList(Arrays.asList()));
         prize = new Prize(1,1);
         unusedMonster.add(new Monster("Bicefalo", 20, badConsequence, prize));
+        
+        //Creacion Monstruo "El mal indecible impronunciable"
+        badConsequence = new BadConsequence("Pierdes 1 mano visible",
+                0, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)),new ArrayList(Arrays.asList()));
+        prize = new Prize(3,1);
+        unusedMonster.add(new Monster("El mal indecible impronunciable", 10, badConsequence, prize, -2));
+        
+        //Creacion Monstruo "Testigos oculares"
+        badConsequence = new BadConsequence("Pierdes tus tesoros visibles. Jajaja.",
+                0, BadConsequence.MAXTREASURES,0);
+        prize = new Prize(2,1);
+        unusedMonster.add(new Monster("Testigos oculares", 6, badConsequence, prize, 2));
+        
+        //Creacion Monstruo "El gran cthulhu"
+        badConsequence = new BadConsequence("Hoy no es tu dia de suerte. Mueres",
+                true);
+        prize = new Prize(2,5);
+        unusedMonster.add(new Monster("El gran cthulhu", 20, badConsequence, prize, 4));
+        
+        //Creacion Monstruo "Serpiente Politico"
+        badConsequence = new BadConsequence("Tu gobierno te recorta 2 niveles.",
+                2, 0,0);
+        prize = new Prize(2,1);
+        unusedMonster.add(new Monster("Serpiente Politico", 8, badConsequence, prize, -2));
+        
+        //Creacion Monstruo "Felpuggoth"
+        badConsequence = new BadConsequence("Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas.",
+                0, new ArrayList(Arrays.asList(TreasureKind.HELMET, TreasureKind.ARMOR)),new ArrayList(Arrays.asList(TreasureKind.ONEHAND, TreasureKind.ONEHAND, TreasureKind.BOTHHANDS)));
+        prize = new Prize(1,1);
+        unusedMonster.add(new Monster("Felpuggoth", 2, badConsequence, prize, 5));
+        
+        //Creacion Monstruo "Shoggoth"
+        badConsequence = new BadConsequence("Pierdes 2 niveles",
+                2, 0,0);
+        prize = new Prize(4,2);
+        unusedMonster.add(new Monster("Shoggoth", 16, badConsequence, prize, -4));
+        
+        //Creacion Monstruo "Lolitagooth"
+        badConsequence = new BadConsequence("Pintalabios negro. Pierdes 2 niveles",
+                2, 0,0);
+        prize = new Prize(1,1);
+        unusedMonster.add(new Monster("Lolitagooth", 2, badConsequence, prize, 3));
+    }
+    
+    private void initCultistCardDeck(){
+        unusedCultists=new ArrayList();
+        
+        // Creacion de Sectario
+        unusedCultists.add(new Cultist("Sectario", 1));
+        
+        // Creacion de Sectario
+        unusedCultists.add(new Cultist("Sectario", 2));
+        
+        // Creacion de Sectario
+        unusedCultists.add(new Cultist("Sectario", 1));
+        
+        // Creacion de Sectario
+        unusedCultists.add(new Cultist("Sectario", 2));
+        
+        // Creacion de Sectario
+        unusedCultists.add(new Cultist("Sectario", 1));
+        
+        // Creacion de Sectario
+        unusedCultists.add(new Cultist("Sectario", 1));
     }
     /*
     Baraja el mazo de cartas de teseros unusedTreasures
@@ -250,6 +316,10 @@ public class CardDealer {
     */
     private void shuffleMonsters(){
         Collections.shuffle(unusedMonster);
+    }
+    
+    private void shuffleCultists(){
+        Collections.shuffle(unusedCultists);
     }
     
     public static CardDealer getInstance(){
@@ -303,6 +373,29 @@ public class CardDealer {
         return monster_get;
     }
     
+    public Cultist nextCultist(){
+        //Comprobamos si tenemos cartas en el mazo
+        if (this.unusedCultists.isEmpty()) {
+            
+            //Recorremos las cartas descartadas
+            this.initCultistCardDeck();
+            
+            //Las barajamos
+            this.shuffleCultists();
+            
+        }
+        
+        //Obtengo la primera carta del mazo
+        Cultist m = this.unusedCultists.get(0);
+        
+        
+        //La eliminamos del mazo
+        this.unusedCultists.remove(m);
+        
+        //Devolvemos la carta
+        return m;
+    }
+    
     /*
     Introduce en el mazo de descartes de tesoros (usedTreasures) el tesoro t.
     */
@@ -323,8 +416,9 @@ public class CardDealer {
         
         this.initMonsterCardDeck();
         this.shuffleMonsters();
+        
+        this.initCultistCardDeck();
+        this.shuffleCultists();
     }
-    
-    
     
 }
