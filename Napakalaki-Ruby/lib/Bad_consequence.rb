@@ -54,16 +54,16 @@ module NapakalakiGame
     
     if((@nVisibleTreasures==0) && (@nHiddenTreasures==0))
       if ((@someVisibleTreasures==0) && (@someHiddenTreasures==0))
-        true
+        empty=true
       else if((@someVisibleTreasures.empty?) && (@someHiddenTreasures.empty?))
-              true
+              empty=true
            else
-              false
+              empty=false
            end
       end
       
     else
-      false
+      empty=false
     end
     
     if @death==true
