@@ -16,37 +16,21 @@ public class Monster {
     
     //Constructor
     Monster(String name, int level, BadConsequence bc, Prize price){
-        setName(name);
-        setCombatLevel(level);
-        setBadConsequence(bc);
-        setPrize(price);
+        this.name=name;
+        this.combatLevel=level;
+        this.bc=bc;
+        this.price=price;
         levelChangeAgainstCultistPlayer=0;
     }
     
     Monster(String name, int level, BadConsequence bc, Prize price, int LC){
-        setName(name);
-        setCombatLevel(level);
-        setBadConsequence(bc);
-        setPrize(price);
+        this.name=name;
+        this.combatLevel=level;
+        this.bc=bc;
+        this.price=price;
         levelChangeAgainstCultistPlayer=LC;
     }
-    
-    // Modificadores
-    private void setName(String name_1){
-        name = name_1;
-    }
-    
-    private void setCombatLevel(int combat_level){
-        combatLevel = combat_level;
-    }
-    
-    private void setBadConsequence(BadConsequence Bad_c){
-        bc = Bad_c;
-    }
-    
-    private void setPrize(Prize price_1){
-        price = price_1;
-    }
+   
     
     //Consultores
     public String getName(){  //Consultor de Name
