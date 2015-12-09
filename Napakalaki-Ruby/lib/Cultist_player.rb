@@ -5,7 +5,7 @@
 class CultistPlayer < Player
   
   #Atributos
-  attr_accessor :my_cultist_card
+  attr_accessor :myCultistCard
   
   @@totalCultistPlayers=0
   
