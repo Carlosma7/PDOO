@@ -53,39 +53,6 @@ public class Monster {
         return (combatLevel+levelChangeAgainstCultistPlayer);
     }
     
-    // Método Consulta monstruos con niveles igual o superior a 10
-    public boolean LevelExceeding10(){
-        if(combatLevel>=10)
-            return true;
-        else
-            return false;
-    }
-    
-    // Método Consulta monstruos cuyo mal rollo solo implique pérdida de niveles
-    public boolean OnlyLevelsBadConsequence(){
-        if((bc.getLevels()>0) && (bc.getNVisibleTreasures()==0) && (bc.getNHiddenTreasures()==0))
-            return true;
-        else
-            return false;
-    }
-    
-    // Método Consulta monstruos cuyo buen rollo tenga un nivel mayor que 1
-    public boolean PrizeLevelsExceeding1(){
-        if(price.getLevel()>1)
-            return true;
-        else
-            return false;
-    }
-    
-    /* Método Consulta monstruos cuyo mal rollo implique perdida de un determinado
-    de tesoro ya sea visible u oculto */
-    public boolean LoseSpecificTreasures(){
-        if(bc.TieneTesoros())
-            return true;
-        else
-            return false;
-    }
-    
     public int getLevelsGained(){
         return price.getLevel();
     }

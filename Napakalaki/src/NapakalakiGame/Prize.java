@@ -13,18 +13,10 @@ public class Prize {
     
     // Constructor y métodos públicos
     public Prize(int treasures, int level){ //Clase Premio
-        setTreasures(treasures);    
-        setLevel(level);
+        this.treasures=treasures;
+        this.level=level;
     }
     
-    // Modificadores
-    private void setTreasures(int tr){   //Modificador de Treasures
-        treasures = tr;
-    }
-    
-    private void setLevel(int lv){   //Modificador de Level
-        level = lv;
-    }
     
     // Consultores
     public int getTreasure(){   //Consultor de Treasures
