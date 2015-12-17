@@ -12,6 +12,6 @@ package NapakalakiGame;
 public class DeathBadConsequence extends NumericBadConsequence{
     // Constructor del mal rollo si mueres
     public DeathBadConsequence(String text){
-        super(text,0, MAXTREASURES, MAXTREASURES);
+        super(text,Player.MAXLEVEL, MAXTREASURES, MAXTREASURES);
     }
 }

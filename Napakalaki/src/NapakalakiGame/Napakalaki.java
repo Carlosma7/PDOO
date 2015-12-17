@@ -162,6 +162,8 @@ public class Napakalaki {
             if(dead){
                 this.currentPlayer.initTreasures();
             }
+        }else{
+            this.currentMonster = this.dealer.nextMonster();
         }
         
         return stateOK;

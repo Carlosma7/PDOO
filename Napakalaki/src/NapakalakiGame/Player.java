@@ -2,6 +2,7 @@ package NapakalakiGame;
 
 import java.util.ArrayList;
 import java.util.Random;
+import GUI.Dice;
 
 /**
  *
@@ -57,7 +58,7 @@ public class Player {
     los bonus que le proporcionan los tesoros que tenga equipados, según las 
     reglas del juego.
     */
-    protected int getCombatLevel(){
+    public int getCombatLevel(){
         int nivel = level;
         for (Treasure t: visibleTreasures)
             nivel = nivel + t.getBonus();
@@ -260,7 +261,7 @@ public class Player {
     public void discardVisibleTreasure(Treasure t){
         this.visibleTreasures.remove(t);
         
-        if(pendingBadConsequence!=null && pendingBadConsequence.isEmpty()){
+        if(pendingBadConsequence!=null && !pendingBadConsequence.isEmpty()){
             pendingBadConsequence.substractVisibleTreasure(t);
         }
         
@@ -270,7 +271,7 @@ public class Player {
     public void discarHiddenTreasure(Treasure t){
         this.hiddenTreasures.remove(t);
         
-        if(pendingBadConsequence!=null && pendingBadConsequence.isEmpty()){
+        if(pendingBadConsequence!=null && !pendingBadConsequence.isEmpty()){
             pendingBadConsequence.substractHiddenTreasure(t);
         }
         
@@ -289,6 +290,7 @@ public class Player {
     
     public void initTreasures(){
         CardDealer dealer= CardDealer.getInstance();
+        Dice.createInstance(null);
         Dice dice = Dice.getInstance();
         
         this.bringToLife();
@@ -316,6 +318,10 @@ public class Player {
         return level;
     }
     
+    public String IsCultist(){
+        return "No";
+    }
+    
     public Treasure stealTreasure(){
         
         Treasure treasure =null;
@@ -335,7 +341,10 @@ public class Player {
     */
     public void setEnemy(Player enemy){
         this.enemy=enemy;
+    }
     
+    public Player getEnemy(){
+        return enemy;
     }
     
     private Treasure giveMeATreasure(){
@@ -373,7 +382,7 @@ public class Player {
     
     public void discardAllTreasures(){
         ArrayList<Treasure> copiavisibleTreasure= new ArrayList(visibleTreasures);
-        ArrayList<Treasure> copiahiddenTreasure= new ArrayList(visibleTreasures);
+        ArrayList<Treasure> copiahiddenTreasure= new ArrayList(hiddenTreasures);
         
         for(Treasure t:copiavisibleTreasure)
             this.discardVisibleTreasure(t);
