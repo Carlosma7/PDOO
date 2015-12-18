@@ -19,69 +19,59 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="visibleTreasures" alignment="0" pref="200" max="32767" attributes="0"/>
+                      <Component id="hiddenTreasures" alignment="0" max="32767" attributes="0"/>
+                  </Group>
                   <Component id="LabelName" min="-2" max="-2" attributes="0"/>
                   <Component id="LabelLevel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="LabelCombatLevel" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="LabelEnemy" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="LabelCultist" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="visibleTreasures" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="ButtonStealTreasure" max="32767" attributes="0"/>
+                          <Component id="ButtonDiscardTreasures" pref="180" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="hiddenTreasures" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="ButtonMakeVisible" max="32767" attributes="0"/>
+                          <Component id="ButtonDiscardAllTreasures" pref="180" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="ButtonDiscardTreasures" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ButtonDiscardAllTreasures" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="ButtonStealTreasure" min="-2" pref="157" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ButtonMakeVisible" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="pendingBadConsequenceView1" alignment="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="LabelName" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="LabelLevel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="LabelCombatLevel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="LabelEnemy" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="pendingBadConsequenceView1" min="-2" pref="115" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Component id="LabelName" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="LabelLevel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="LabelCombatLevel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="LabelEnemy" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="LabelCultist" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="visibleTreasures" min="-2" max="-2" attributes="0"/>
-                  <Component id="hiddenTreasures" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ButtonMakeVisible" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="ButtonStealTreasure" max="32767" attributes="0"/>
+              <Component id="visibleTreasures" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="hiddenTreasures" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ButtonMakeVisible" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="ButtonStealTreasure" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ButtonDiscardTreasures" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="ButtonDiscardAllTreasures" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -115,8 +105,8 @@
     <Container class="javax.swing.JPanel" name="visibleTreasures">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Tesoros Visibles"/>
           </Border>
         </Property>
       </Properties>
@@ -126,8 +116,8 @@
     <Container class="javax.swing.JPanel" name="hiddenTreasures">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder/>
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Tesoros ocultos"/>
           </Border>
         </Property>
       </Properties>
@@ -138,23 +128,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Steal Treasure"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonStealTreasureActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ButtonMakeVisible">
       <Properties>
         <Property name="text" type="java.lang.String" value="Make Visible"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonMakeVisibleActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ButtonDiscardTreasures">
       <Properties>
         <Property name="text" type="java.lang.String" value="Discard Treasures"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDiscardTreasuresActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ButtonDiscardAllTreasures">
       <Properties>
         <Property name="text" type="java.lang.String" value="Discard All Treasures"/>
       </Properties>
-    </Component>
-    <Component class="GUI.PendingBadConsequenceView" name="pendingBadConsequenceView1">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonDiscardAllTreasuresActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

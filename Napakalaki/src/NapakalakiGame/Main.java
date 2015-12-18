@@ -22,20 +22,17 @@ public class Main {
       
         NapakalakiView napakalakiView=new NapakalakiView(); // Creación Ventana del juego
         
-        ArrayList<String> names;    // Para los nombres de los jugadores
         PlayerNamesCapture namesCapture= new PlayerNamesCapture(napakalakiView, true);
-        
-        names = namesCapture.getNames();    // Obtenemos los nombres
         
         Dice.createInstance (napakalakiView);   // Dado para el juego
         
-        napakalakiView.setNapakalaki(game); // Obtenemos los nombres de los jugadores
+        ArrayList<String> names = namesCapture.getNames();    // Obtenemos los nombres
         
         game.initGame(names); // SE INICIA EL JUEGO
         
+        napakalakiView.setNapakalaki(game); // Obtenemos los nombres de los jugadores
         
-        
-        napakalakiView.setVisible (true);   // Apertura ventana del juego
+         napakalakiView.setVisible (true);   // Apertura ventana del juego
     }
     
 }

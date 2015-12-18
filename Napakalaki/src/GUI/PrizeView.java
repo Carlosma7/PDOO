@@ -25,7 +25,7 @@ public class PrizeView extends javax.swing.JPanel {
         prizeModel = t;
         // se actualiza la vista del tesoro
         String my_prize = "Tesoros: " + Integer.toString(prizeModel.getTreasure()) +
-                " Niveles: " + Integer.toString(prizeModel.getLevel());
+                ". Niveles: " + Integer.toString(prizeModel.getLevel()) + ".";
         this.LabelTreasuresAndLevels.setText(my_prize);
         // la siguiente instrucción hace que los cambios en la vista sean efectivos
         repaint();
@@ -49,16 +49,15 @@ public class PrizeView extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LabelTreasuresAndLevels, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelTreasuresAndLevels, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LabelTreasuresAndLevels)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

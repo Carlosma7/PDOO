@@ -13,7 +13,7 @@ import NapakalakiGame.BadConsequence;
  */
 public class PendingBadConsequenceView extends javax.swing.JPanel {
 
-    BadConsequence pendingModel;
+    private BadConsequence pendingModel;
     
     
     public PendingBadConsequenceView() {

@@ -6,6 +6,7 @@
 package GUI;
 
 import NapakalakiGame.Treasure;
+import java.awt.Color;
 
 /**
  *
@@ -13,7 +14,8 @@ import NapakalakiGame.Treasure;
  */
 public class TreasureView extends javax.swing.JPanel {
 
-    Treasure treasureModel;
+    private Treasure treasureModel;
+    private boolean selected=false;
     
     
     public TreasureView() {
@@ -30,9 +32,18 @@ public class TreasureView extends javax.swing.JPanel {
         this.LabelBonus.setText(my_bonus);
         
         String my_type = "Tipo: " + treasureModel.getType().toString();
-        this.LabelType.setText(my_type);
+        this.LabelType.setText(my_type);       
+        
         // la siguiente instrucción hace que los cambios en la vista sean efectivos
         repaint();
+    }
+    
+    public boolean isSelected(){
+        return selected;
+    }
+    
+    public Treasure getTreasure(){
+        return treasureModel;
     }
 
     /**
@@ -48,6 +59,12 @@ public class TreasureView extends javax.swing.JPanel {
         LabelBonus = new javax.swing.JLabel();
         LabelType = new javax.swing.JLabel();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
         LabelName.setText("Nombre:");
 
         LabelBonus.setText("Bonus:");
@@ -60,24 +77,44 @@ public class TreasureView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LabelName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(LabelBonus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(LabelType, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LabelBonus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 86, Short.MAX_VALUE))
+                    .addComponent(LabelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LabelName)
-                    .addComponent(LabelBonus)
-                    .addComponent(LabelType))
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addComponent(LabelName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LabelBonus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelType)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // Seleccionamos o deseleccionamos
+        if(selected==true){
+            selected=false;
+            // Cambiamos color para identificar el seleccionado
+            setBackground(getBackground());
+            setOpaque(false);
+        }else{
+            if(selected==false)
+            selected=true;
+            // Cambiamos color para identificar el seleccionado
+            setBackground(Color.red);
+            setOpaque(true);
+        }
+        
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

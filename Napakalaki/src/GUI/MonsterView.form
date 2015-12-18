@@ -16,18 +16,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="VistaPrize" alignment="1" min="-2" pref="177" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="LabelName" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="LabelLevels" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LabelName" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LabelLevels" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="VistaBadConsequence" min="-2" pref="400" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="VistaBadConsequence" min="-2" pref="300" max="-2" attributes="0"/>
+                  <Component id="VistaPrize" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="56" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,11 +40,10 @@
               <Component id="LabelName" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="LabelLevels" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="VistaBadConsequence" pref="125" max="32767" attributes="0"/>
-                  <Component id="VistaPrize" pref="0" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="VistaBadConsequence" min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="VistaPrize" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -59,9 +60,9 @@
         <Property name="text" type="java.lang.String" value="Niveles (Normal/Sectario)"/>
       </Properties>
     </Component>
-    <Component class="GUI.PrizeView" name="VistaPrize">
-    </Component>
     <Component class="GUI.BadConsequenceView" name="VistaBadConsequence">
+    </Component>
+    <Component class="GUI.PrizeView" name="VistaPrize">
     </Component>
   </SubComponents>
 </Form>

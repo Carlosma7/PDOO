@@ -21,6 +21,9 @@ public class CultistPlayer extends Player{
         
         totalCultistPlayers++;
         this.myCultistCard=c;
+        
+        // Establecemos su enemigo
+        this.enemy=p.enemy;
     }
     
     @Override

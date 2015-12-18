@@ -5,7 +5,9 @@
  */
 package GUI;
 
+import NapakalakiGame.CombatResult;
 import NapakalakiGame.Napakalaki;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +22,21 @@ public class NapakalakiView extends javax.swing.JFrame {
     }
 
     public void setNapakalaki(Napakalaki model){
+        // se actualiza el atributo de referencia
         napakalakiModel=model;
+        
+        // Establecemos el panel del jugador
+        VistaPlayer.setNapakalaki(model, this);
+        
+        // se actualiza la vista del tesoro
+        this.VistaPlayer.setPlayer(napakalakiModel.getCurrentPlayer());
+        this.VistaMonster.setMonster(napakalakiModel.getCurrentMonster());
+        
+        // Establecemos que valores o botones son visibles o se permiten usar
+        this.VistaMonster.setVisible(false);
+        this.ButtonCombat.setEnabled(false);
+        this.ButtonNextTurn.setEnabled(false);
+        this.ButtonMeetTheMonster.setEnabled(true);
     }
     
     /**
@@ -32,23 +48,114 @@ public class NapakalakiView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ButtonMeetTheMonster = new javax.swing.JButton();
+        ButtonCombat = new javax.swing.JButton();
+        ButtonNextTurn = new javax.swing.JButton();
+        VistaPlayer = new GUI.PlayerView();
+        VistaMonster = new GUI.MonsterView();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        ButtonMeetTheMonster.setText("Meet the Monster");
+        ButtonMeetTheMonster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMeetTheMonsterActionPerformed(evt);
+            }
+        });
+
+        ButtonCombat.setText("Combat");
+        ButtonCombat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCombatActionPerformed(evt);
+            }
+        });
+
+        ButtonNextTurn.setText("Next turn");
+        ButtonNextTurn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonNextTurnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ButtonMeetTheMonster, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonCombat, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonNextTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(VistaPlayer, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(VistaMonster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(VistaMonster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 368, Short.MAX_VALUE))
+                    .addComponent(VistaPlayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonMeetTheMonster, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonCombat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonNextTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ButtonMeetTheMonsterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMeetTheMonsterActionPerformed
+        this.VistaMonster.setVisible(true);
+        this.ButtonCombat.setEnabled(true);
+        this.ButtonMeetTheMonster.setEnabled(false);
+    }//GEN-LAST:event_ButtonMeetTheMonsterActionPerformed
+
+    private void ButtonCombatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCombatActionPerformed
+        this.ButtonCombat.setEnabled(false);
+        
+        CombatResult result = napakalakiModel.developCombat();
+
+        setNapakalaki(napakalakiModel);
+
+        if (result == CombatResult.WINGAME) {
+
+            JOptionPane.showMessageDialog(null, "El jugador " + this.napakalakiModel.getCurrentPlayer().getName() + 
+                    " ha llegado al nivel 10. GANA EL JUEGO.");
+            System.exit(0);
+        }
+        
+        this.ButtonNextTurn.setEnabled(true);
+        this.ButtonMeetTheMonster.setEnabled(false);
+    }//GEN-LAST:event_ButtonCombatActionPerformed
+
+    private void ButtonNextTurnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNextTurnActionPerformed
+        // Se hacen en el set
+        //this.ButtonNextTurn.setEnabled(false);
+        //this.VistaMonster.setVisible(false);
+        
+        this.napakalakiModel.nextTurn();
+
+        setNapakalaki(napakalakiModel);
+    }//GEN-LAST:event_ButtonNextTurnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonCombat;
+    private javax.swing.JButton ButtonMeetTheMonster;
+    private javax.swing.JButton ButtonNextTurn;
+    private GUI.MonsterView VistaMonster;
+    private GUI.PlayerView VistaPlayer;
     // End of variables declaration//GEN-END:variables
 }

@@ -129,7 +129,7 @@ public class Napakalaki {
         }
     }
     
-    public void makeTreasureVisible(ArrayList<Treasure>treasure){
+    public void makeTreasuresVisible(ArrayList<Treasure>treasure){
         for(Treasure t:treasure)
             this.currentPlayer.makeTreasureVisible(t);
     }
