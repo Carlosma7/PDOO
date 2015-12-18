@@ -147,7 +147,9 @@ public class NapakalakiView extends javax.swing.JFrame {
         
         this.napakalakiModel.nextTurn();
 
-        setNapakalaki(napakalakiModel);
+        
+        this.setNapakalaki(napakalakiModel);
+        
     }//GEN-LAST:event_ButtonNextTurnActionPerformed
 
 
