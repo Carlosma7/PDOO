@@ -22,7 +22,7 @@ public class Napakalaki {
     private CardDealer dealer = CardDealer.getInstance();
     private ArrayList <Player> players;
 
-    private Napakalaki() {
+    private Napakalaki(){
     }
     
     private void initPlayers(ArrayList<String> names){

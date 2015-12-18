@@ -144,12 +144,15 @@ public class NapakalakiView extends javax.swing.JFrame {
         // Se hacen en el set
         //this.ButtonNextTurn.setEnabled(false);
         //this.VistaMonster.setVisible(false);
-        
-        this.napakalakiModel.nextTurn();
+        boolean turno=this.napakalakiModel.nextTurn();
 
         
         this.setNapakalaki(napakalakiModel);
         
+        if(turno){
+            this.ButtonMeetTheMonster.setEnabled(false);
+            this.ButtonNextTurn.setEnabled(true);
+        }
     }//GEN-LAST:event_ButtonNextTurnActionPerformed
 
 

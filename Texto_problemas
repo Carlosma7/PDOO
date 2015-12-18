@@ -1,4 +1,7 @@
 Dudas para Zoraida:
 -Botones de PlayerView: ¿Que hacen? ¿Como desactivo y activo los botones?
--Botón NextTurn: Depende del Discard All Treasures
+-Botón NextTurn: Depende del Discard All Treasures( mas bien del Pending) Hay un problema y es que me deja pasar de turno sin cumplir el 
+mal rollo, sospecho que no ajusta bien o algo.
 -Ruby: Mirar código
+
+Voy a crear un metodo getPendingBadConsequence en player para la Pending del PlayerView. Parece funcionar

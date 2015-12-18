@@ -66,6 +66,10 @@ public class Player {
         return nivel;
     }
     
+    public BadConsequence getPending(){
+        return pendingBadConsequence;
+    }
+    
     /*
     Incrementa el nivel del jugador en i niveles, teniendo en cuenta 
     las reglas del juego.
