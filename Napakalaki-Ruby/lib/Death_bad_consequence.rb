@@ -4,9 +4,11 @@
 
 require_relative "Bad_consequence"
 
+module NapakalakiGame
 class DeathBadConsequence < NumericBadConsequence
   
   def initialize(aText)
     super(aText,10, @@MAXTREASURES, @@MAXTREASURES)
   end
+end
 end

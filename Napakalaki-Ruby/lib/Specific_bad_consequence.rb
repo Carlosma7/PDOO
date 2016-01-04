@@ -4,6 +4,7 @@
 
 require_relative "Bad_consequence"
 
+module NapakalakiGame
 class SpecificBadConsequence < BadConsequence
   
   attr_reader:someVisibleTreasures,:someHiddenTreasures
@@ -87,4 +88,5 @@ class SpecificBadConsequence < BadConsequence
     return pending
   end
   
+end
 end

@@ -4,11 +4,9 @@ module NapakalakiGame
   @@MAXTREASURES=10
   
   
-  def initialize(aText, someLevels, death)
+  def initialize(aText, someLevels)
     @text=aText    # Mensaje de mal rollo
     @levels=someLevels  # Level que se pierden
-    
-    @death=death   # Indica si muere el jugador o no
     
    
   end

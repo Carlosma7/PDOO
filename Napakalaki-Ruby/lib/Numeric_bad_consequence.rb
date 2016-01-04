@@ -4,6 +4,7 @@
 
 require_relative "Bad_consequence"
 
+module NapakalakiGame
 class NumericBadConsequence < BadConsequence
   
   
@@ -54,4 +55,5 @@ class NumericBadConsequence < BadConsequence
       
       pending=NumericBadConsequence.new(@text,@levels,nV,nH)
   end
+end
 end
