@@ -67,6 +67,10 @@ class Monster
     @price.treasures
   end
   
+  def getCombatLevel
+    return @combatLevel
+  end
+  
   def getCombatLevelAgainstCultistPlayer
     return (@combatLevel+@levelChangeAgainstCultistPlayer)
   end

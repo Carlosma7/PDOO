@@ -59,7 +59,7 @@ class Player
   def combat (m)
         
     myLevel= self.getCombatLevel
-    monsterLevel=getOponentLevel(m)
+    monsterLevel=self.getOponentLevel(m)
         
     if (myLevel>monsterLevel)
       self.applyPrize(m)

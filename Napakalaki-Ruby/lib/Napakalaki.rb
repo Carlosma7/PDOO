@@ -7,6 +7,7 @@ require "singleton"
 require_relative "Player"
 require_relative "Card_dealer"
 require_relative "Treasure"
+require_relative "Combat_result"
 
 class Napakalaki
   
@@ -85,7 +86,7 @@ class Napakalaki
     def developCombat
       combat = @currentPlayer.combat(self.currentMonster)
         
-      if(combat==CombatResult.LOSEANDCONVERT)
+      if(combat==CombatResult::LOSEANDCONVERT)
         carta=@dealer.nextCultist
         nuevo_jugador= CultistPlayer.new(@currentPlayer, carta)
            
@@ -167,7 +168,7 @@ class Napakalaki
     def endOfGame(result)
       end_game=false
         
-      if(result==CombatResult.WINGAME)
+      if(result==CombatResult::WINGAME)
           end_game=true;
       end
         
