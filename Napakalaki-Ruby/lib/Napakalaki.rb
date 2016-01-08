@@ -90,10 +90,17 @@ class Napakalaki
         nuevo_jugador= CultistPlayer.new(@currentPlayer, carta)
            
         # Obtenemos el indice del currentplayer por sustituirlo por el cultista
-        indice = players.indexOf(currentPlayer);
+        indice = players.indexOf(currentPlayer)
+        
+        # Sustituimos el jugador en los enemigos
+        for p in @players
+          if (@currentPlayer==p.enemy) then
+            p.enemy=nuevo_jugador
+          end
+        end
 
         # Sustituimos el cultista
-        @players.delete(@current_player)
+        @players.delete(@currentPlayer)
         @players << nuevo_jugador
 
         @currentPlayer = nuevo_jugador

@@ -104,6 +104,11 @@ public class Napakalaki {
            
            //Obrenemos el indice del currentplayer por sustituirlo por el cultista
             int indice = players.indexOf(currentPlayer);
+            
+            // Sustituimos el jugador en los enemigos
+            for(Player p:players)
+                if(currentPlayer==p.enemy)
+                    p.enemy=nuevo_jugador;
 
             //Sustituimos el cultista
             this.players.set(indice, nuevo_jugador);
