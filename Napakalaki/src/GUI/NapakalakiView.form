@@ -41,6 +41,14 @@
                   </Group>
               </Group>
           </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LabelPasarTurno" min="-2" max="-2" attributes="0"/>
+                  <Component id="LabelCombatResult" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -48,13 +56,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="VistaMonster" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="368" max="32767" attributes="0"/>
-                  </Group>
-                  <Component id="VistaPlayer" max="32767" attributes="0"/>
+                  <Component id="VistaMonster" min="-2" max="-2" attributes="0"/>
+                  <Component id="VistaPlayer" min="-2" pref="500" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="LabelCombatResult" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="LabelPasarTurno" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="ButtonMeetTheMonster" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="ButtonCombat" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
@@ -93,6 +102,16 @@
     <Component class="GUI.PlayerView" name="VistaPlayer">
     </Component>
     <Component class="GUI.MonsterView" name="VistaMonster">
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelCombatResult">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Resultado:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelPasarTurno">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pasar turno"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

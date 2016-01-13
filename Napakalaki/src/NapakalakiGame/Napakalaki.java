@@ -52,7 +52,7 @@ public class Napakalaki {
             if(turno==tam-1){
                 turno=0;
             }else{
-                turno=turno++;
+                turno++;
             }
         }
             

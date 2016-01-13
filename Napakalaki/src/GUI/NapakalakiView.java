@@ -7,6 +7,7 @@ package GUI;
 
 import NapakalakiGame.CombatResult;
 import NapakalakiGame.Napakalaki;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,9 +35,18 @@ public class NapakalakiView extends javax.swing.JFrame {
         
         // Establecemos que valores o botones son visibles o se permiten usar
         this.VistaMonster.setVisible(false);
+        this.LabelCombatResult.setVisible(false);
+        this.LabelPasarTurno.setVisible(false);
         this.ButtonCombat.setEnabled(false);
         this.ButtonNextTurn.setEnabled(false);
         this.ButtonMeetTheMonster.setEnabled(true);
+        
+        
+        // Se fuerza la actualización visual del panel
+        VistaMonster.repaint();
+        VistaMonster.revalidate();
+        VistaPlayer.repaint();
+        VistaPlayer.revalidate();
     }
     
     /**
@@ -53,6 +63,8 @@ public class NapakalakiView extends javax.swing.JFrame {
         ButtonNextTurn = new javax.swing.JButton();
         VistaPlayer = new GUI.PlayerView();
         VistaMonster = new GUI.MonsterView();
+        LabelCombatResult = new javax.swing.JLabel();
+        LabelPasarTurno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +89,10 @@ public class NapakalakiView extends javax.swing.JFrame {
             }
         });
 
+        LabelCombatResult.setText("Resultado:");
+
+        LabelPasarTurno.setText("Pasar turno");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,17 +111,25 @@ public class NapakalakiView extends javax.swing.JFrame {
                         .addComponent(VistaPlayer, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(VistaMonster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelPasarTurno)
+                    .addComponent(LabelCombatResult))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(VistaMonster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 368, Short.MAX_VALUE))
-                    .addComponent(VistaPlayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(VistaMonster, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(VistaPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(LabelCombatResult)
+                .addGap(18, 18, 18)
+                .addComponent(LabelPasarTurno)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonMeetTheMonster, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonCombat, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -129,11 +153,20 @@ public class NapakalakiView extends javax.swing.JFrame {
 
         setNapakalaki(napakalakiModel);
 
-        if (result == CombatResult.WINGAME) {
+        if (result == CombatResult.WINGAME) {   // Gana combate y partida
 
             JOptionPane.showMessageDialog(null, "El jugador " + this.napakalakiModel.getCurrentPlayer().getName() + 
                     " ha llegado al nivel 10. GANA EL JUEGO.");
             System.exit(0);
+        }else{
+            if(result == CombatResult.WIN){ // Gana combate
+                LabelCombatResult.setText("HAS GANADO EL COMBATE.");
+                LabelCombatResult.setVisible(true);
+            }else{  // Pierde el combate
+                LabelCombatResult.setText("HAS PERDIDO EL COMBATE.");
+                LabelCombatResult.setVisible(true);
+            }
+                
         }
         
         this.ButtonNextTurn.setEnabled(true);
@@ -146,13 +179,18 @@ public class NapakalakiView extends javax.swing.JFrame {
         //this.VistaMonster.setVisible(false);
         boolean turno=this.napakalakiModel.nextTurn();
 
-        
-        this.setNapakalaki(napakalakiModel);
-        
         if(turno){
-            this.ButtonMeetTheMonster.setEnabled(false);
-            this.ButtonNextTurn.setEnabled(true);
+            this.setNapakalaki(napakalakiModel);
+            this.ButtonMeetTheMonster.setEnabled(true);
+            this.ButtonNextTurn.setEnabled(false);
+            LabelPasarTurno.setVisible(false);
+        }else{
+            LabelPasarTurno.setText("No puedes pasar turno porque no cumples las condiciones.");
+            LabelPasarTurno.setVisible(true);
+            LabelPasarTurno.setForeground(Color.red);
         }
+        
+        
     }//GEN-LAST:event_ButtonNextTurnActionPerformed
 
 
@@ -160,6 +198,8 @@ public class NapakalakiView extends javax.swing.JFrame {
     private javax.swing.JButton ButtonCombat;
     private javax.swing.JButton ButtonMeetTheMonster;
     private javax.swing.JButton ButtonNextTurn;
+    private javax.swing.JLabel LabelCombatResult;
+    private javax.swing.JLabel LabelPasarTurno;
     private GUI.MonsterView VistaMonster;
     private GUI.PlayerView VistaPlayer;
     // End of variables declaration//GEN-END:variables

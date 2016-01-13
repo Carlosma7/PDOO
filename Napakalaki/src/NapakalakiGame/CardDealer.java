@@ -358,8 +358,9 @@ public class CardDealer {
         }else{
             for(Monster m:usedMonster){
                 unusedMonster.add(m);
-                usedMonster.remove(m);
             }
+            
+            usedMonster.clear();
             
             shuffleMonsters();
             
