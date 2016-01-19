@@ -103,7 +103,7 @@ public class CardDealer {
         unusedTreasures.add(new Treasure("Gaita", 4, TreasureKind.BOTHHANDS));
         
         //Creacion de Escopeta de 3 caniones
-        unusedTreasures.add(new Treasure("Escopeta de 3 caniones", 4, TreasureKind.BOTHHANDS));
+        unusedTreasures.add(new Treasure("Escopeta de 3 cañones", 4, TreasureKind.BOTHHANDS));
         
         //Creacion de La rebeca metalica
         unusedTreasures.add(new Treasure("La rebeca metalica", 2, TreasureKind.ARMOR));
@@ -118,7 +118,7 @@ public class CardDealer {
         unusedTreasures.add(new Treasure("Necrotelecom", 2, TreasureKind.HELMET));
         
         //Creacion de Necro-playboycon
-        unusedTreasures.add(new Treasure("Necro-playboycon", 2, TreasureKind.ONEHAND));
+        unusedTreasures.add(new Treasure("Necro playboycon", 2, TreasureKind.ONEHAND));
         
         //Creacion de Shogulador
         unusedTreasures.add(new Treasure("Shogulador", 1, TreasureKind.BOTHHANDS));
@@ -146,7 +146,7 @@ public class CardDealer {
         badConsequence= new NumericBadConsequence("Pierdes todos tus tesoros visibles",
         0, BadConsequence.MAXTREASURES, 0);
         prize= new Prize(3,1);
-        unusedMonster.add(new Monster("El gorrón en el umbral", 10, badConsequence, prize));
+        unusedMonster.add(new Monster("El gorron en el umbral", 10, badConsequence, prize));
         
         // Creación Monstruo "3 Byakhees de bonanza"
         badConsequence= new SpecificBadConsequence("Pierdes tu armadura visible y otra oculta.", 0, new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
@@ -166,7 +166,7 @@ public class CardDealer {
         // Creación Monstruo "El Lenguas"
         badConsequence= new NumericBadConsequence("Menudo susto te llevas. Pierdes 2 niveles y 5 tesoros visibles.", 2, 5, 0);
         prize= new Prize(1,1);
-        unusedMonster.add(new Monster("El Lenguas", 20, badConsequence, prize));
+        unusedMonster.add(new Monster("El lenguas", 20, badConsequence, prize));
         
         // Creación Monstruo "El sopor de Dunwich"
         badConsequence= new SpecificBadConsequence("El primordial bostezo contagioso. Pierdes el calzado visible.", 0, new ArrayList(Arrays.asList(TreasureKind.SHOES)), new ArrayList(Arrays.asList()));
@@ -198,7 +198,7 @@ public class CardDealer {
                 + "mano visible y una mano oculta", 0, new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), 
                 new ArrayList(Arrays.asList(TreasureKind.ONEHAND)));
         prize = new Prize(4, 1);
-        unusedMonster.add(new Monster("Angel de la noche ibicenca",14,badConsequence,prize));
+        unusedMonster.add(new Monster("Angeles de la noche ibicenca",14,badConsequence,prize));
         
         //Creacion Monstruo "Los hondos"
         badConsequence = new DeathBadConsequence("Estos monstruos resultan bastante superficiales y te aburren mortalmente. Estas muerto");
@@ -213,7 +213,7 @@ public class CardDealer {
         //Creacion Monstruo "Familia Feliz"
         badConsequence = new DeathBadConsequence("La familia te atrapa. Estas muerto");
         prize = new Prize(4, 1);
-        unusedMonster. add(new Monster("Familia Feliz", 1, badConsequence, prize));
+        unusedMonster. add(new Monster("Familia feliz", 1, badConsequence, prize));
         
         // Creacion Monstruo "Chibithulhu"
         badConsequence = new SpecificBadConsequence("Embobados con el lindo primigenio te descartas de tu casco visible", 0,
@@ -225,7 +225,7 @@ public class CardDealer {
         badConsequence = new SpecificBadConsequence("Sientes bichos bajo la ropa. Descarta la armadura visible", 0,
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR)), new ArrayList(Arrays.asList()));
         prize = new Prize(1,1);
-        unusedMonster.add(new Monster("Bicigooth", 2, badConsequence, prize));
+        unusedMonster.add(new Monster("Bichgooth", 2, badConsequence, prize));
         
         //Creacion Monstruo "Roboggoth"
         badConsequence = new SpecificBadConsequence("La quinta directiva primaria te obliga a perder 2 niveles y un tesoro 2 manos visible",

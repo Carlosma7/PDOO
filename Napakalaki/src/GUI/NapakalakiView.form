@@ -23,31 +23,25 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Component id="VistaPlayer" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="532" max="32767" attributes="0"/>
+              <Component id="VistaMonster" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="ButtonMeetTheMonster" min="-2" pref="250" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ButtonCombat" min="-2" pref="250" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ButtonNextTurn" min="-2" pref="250" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="VistaPlayer" pref="564" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="VistaMonster" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="LabelPasarTurno" min="-2" max="-2" attributes="0"/>
                   <Component id="LabelCombatResult" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="ButtonMeetTheMonster" min="-2" pref="250" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="ButtonCombat" min="-2" pref="250" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="ButtonNextTurn" min="-2" pref="250" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,20 +50,23 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="VistaMonster" min="-2" max="-2" attributes="0"/>
-                  <Component id="VistaPlayer" min="-2" pref="500" max="-2" attributes="0"/>
+                  <Component id="VistaPlayer" alignment="0" min="-2" pref="602" max="-2" attributes="0"/>
+                  <Component id="VistaMonster" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="LabelCombatResult" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="LabelPasarTurno" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="67" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ButtonMeetTheMonster" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="ButtonCombat" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="ButtonNextTurn" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="LabelCombatResult" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="LabelPasarTurno" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="ButtonMeetTheMonster" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="ButtonCombat" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="ButtonNextTurn" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -99,8 +96,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonNextTurnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="GUI.PlayerView" name="VistaPlayer">
-    </Component>
     <Component class="GUI.MonsterView" name="VistaMonster">
     </Component>
     <Component class="javax.swing.JLabel" name="LabelCombatResult">
@@ -112,6 +107,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Pasar turno"/>
       </Properties>
+    </Component>
+    <Component class="GUI.PlayerView" name="VistaPlayer">
     </Component>
   </SubComponents>
 </Form>

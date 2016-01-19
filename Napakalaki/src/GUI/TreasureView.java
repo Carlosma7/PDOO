@@ -7,6 +7,9 @@ package GUI;
 
 import NapakalakiGame.Treasure;
 import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -26,13 +29,11 @@ public class TreasureView extends javax.swing.JPanel {
         // se actualiza el atributo de referencia
         treasureModel = aTreasure;
         // se actualiza la vista del tesoro
-        this.LabelName.setText (treasureModel.getName());
+        String nombre_icon = "/GUI/treasures/" + aTreasure.getName() + ".jpg";
+        System.out.println(nombre_icon);
         
-        String my_bonus = "Bonus: " + Integer.toString(treasureModel.getBonus());
-        this.LabelBonus.setText(my_bonus);
-        
-        String my_type = "Tipo: " + treasureModel.getType().toString();
-        this.LabelType.setText(my_type);       
+        Icon icono = new ImageIcon(MonsterView.class.getResource(nombre_icon));
+        jImagen.setIcon(icono);
         
         // la siguiente instrucción hace que los cambios en la vista sean efectivos
         repaint();
@@ -55,9 +56,7 @@ public class TreasureView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LabelName = new javax.swing.JLabel();
-        LabelBonus = new javax.swing.JLabel();
-        LabelType = new javax.swing.JLabel();
+        jImagen = new javax.swing.JLabel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -65,36 +64,17 @@ public class TreasureView extends javax.swing.JPanel {
             }
         });
 
-        LabelName.setText("Nombre:");
-
-        LabelBonus.setText("Bonus:");
-
-        LabelType.setText("Tipo:");
+        jImagen.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 30, 255), 1, true));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LabelBonus, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 86, Short.MAX_VALUE))
-                    .addComponent(LabelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(LabelName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LabelBonus)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelType)
-                .addContainerGap())
+            .addComponent(jImagen, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -103,14 +83,12 @@ public class TreasureView extends javax.swing.JPanel {
         if(selected==true){
             selected=false;
             // Cambiamos color para identificar el seleccionado
-            setBackground(getBackground());
-            setOpaque(false);
+            jImagen.setBorder(BorderFactory.createLineBorder(Color.blue));
         }else{
             if(selected==false)
             selected=true;
             // Cambiamos color para identificar el seleccionado
-            setBackground(Color.red);
-            setOpaque(true);
+            jImagen.setBorder(BorderFactory.createLineBorder(Color.red));
         }
         
         repaint();
@@ -118,8 +96,6 @@ public class TreasureView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelBonus;
-    private javax.swing.JLabel LabelName;
-    private javax.swing.JLabel LabelType;
+    private javax.swing.JLabel jImagen;
     // End of variables declaration//GEN-END:variables
 }
