@@ -32,7 +32,7 @@ public class PlayerView extends javax.swing.JPanel {
         // se actualiza el atributo de referencia
         playerModel=player;
         // se actualiza la vista del tesoro
-        this.LabelName.setText("Nombre: ");
+        this.LabelName.setText("Nombre:");
         
         this.LabelPlayerName.setText(playerModel.getName());
         this.LabelPlayerName.setForeground(Color.red);
@@ -184,13 +184,13 @@ public class PlayerView extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelName)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LabelPlayerName))
                             .addComponent(LabelLevel)
                             .addComponent(LabelCombatLevel)
                             .addComponent(LabelEnemy)
                             .addComponent(LabelCultist))
-                        .addContainerGap(572, Short.MAX_VALUE))
+                        .addContainerGap(576, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()

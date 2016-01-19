@@ -161,7 +161,7 @@ public class CardDealer {
         // Creación Monstruo "Yskhtihyssg-Goth"
         badConsequence= new DeathBadConsequence("No le hace gracia que pronuncien mal su nombre. Estás muerto.");
         prize= new Prize(3,1);
-        unusedMonster.add(new Monster("Yskhtihyssg-Goth", 12, badConsequence, prize));
+        unusedMonster.add(new Monster("YskhtihyssgGoth", 12, badConsequence, prize));
         
         // Creación Monstruo "El Lenguas"
         badConsequence= new NumericBadConsequence("Menudo susto te llevas. Pierdes 2 niveles y 5 tesoros visibles.", 2, 5, 0);
